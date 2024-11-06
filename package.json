@@ -15,9 +15,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://VishalCodingNinja.github.io/VishalPortfolio.React"
   },
-  "homepage": "",
+  "homepage": "https://vishalcodingninja.github.io/VishalPortfolio.React",
   "license": "ISC",
   "devDependencies": {
     "gh-pages": "^0.12.0",
