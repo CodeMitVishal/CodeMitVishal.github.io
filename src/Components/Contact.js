@@ -12,7 +12,7 @@ class Contact extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    
+
   }
   handleChange(event) {
     const target = event.target;
@@ -22,15 +22,15 @@ class Contact extends Component {
     this.setState({
       [name]: value
     });
-   
+
   }
 
-  handleSubmit(event) { 
+  handleSubmit(event) {
     name.value = "",
-    
-    event.preventDefault();
 
-    
+      event.preventDefault();
+
+
   }
 
   render() {
@@ -52,7 +52,7 @@ class Contact extends Component {
 
           <div className="ten columns">
             <p className="lead">Please feel free to contact me and I will return your email so we can keep in touch. Please fill out the form and note * items are required before submission.
-                  </p>
+            </p>
 
           </div>
         </div>
@@ -60,31 +60,31 @@ class Contact extends Component {
 
           <div className="eight columns">
 
-            <form  onSubmit={this.handleSubmit}  id="contactForm" name="contactForm">
+            <form onSubmit={this.handleSubmit} id="contactForm" name="contactForm">
               <fieldset>
 
                 <div>
                   <label htmlFor="contactName">Name <span className="required">*</span></label>
-                  <input type="text"  size="35" id="contactName" placeholder="Name Required" name='name'  value={this.state.name} onChange={this.handleChange} />
+                  <input type="text" size="35" id="contactName" placeholder="Name Required" name='name' value={this.state.name} onChange={this.handleChange} />
                 </div>
 
                 <div>
                   <label htmlFor="contactEmail">Email <span className="required">*</span></label>
-                  <input type="text"  size="35" id="contactEmail" placeholder="Email Required" name="email" value={this.state.email} onChange={this.handleChange} />
+                  <input type="text" size="35" id="contactEmail" placeholder="Email Required" name="email" value={this.state.email} onChange={this.handleChange} />
                 </div>
 
                 <div>
                   <label htmlFor="contactSubject">Subject</label>
-                  <input type="text"  size="35" placeholder="Subject Title" id="contactSubject" name="subject" value={this.state.subject} onChange={this.handleChange}   />
+                  <input type="text" size="35" placeholder="Subject Title" id="contactSubject" name="subject" value={this.state.subject} onChange={this.handleChange} />
                 </div>
 
                 <div>
                   <label htmlFor="contactMessage">Message <span className="required">*</span></label>
-                  <textarea cols="50" rows="15" id="contactMessage"  placeholder="Main Message" name="message"  value={this.state.message} onChange={this.handleChange}></textarea >
+                  <textarea cols="50" rows="15" id="contactMessage" placeholder="Main Message" name="message" value={this.state.message} onChange={this.handleChange}></textarea >
                 </div>
 
                 <div>
-                 
+
                   <button type='submit' className="submit">Submit</button>
                   <span id="image-loader">
                     <img alt="" src="images/loader.gif" />

@@ -8,16 +8,16 @@ import Portfolio from './Components/Portfolio';
 import Testimonials from './Components/Testimonials';
 import Contact from './Components/Contact';
 import Footer from './Components/Footer';
-import {main,portfolio,resume,testimonials} from '../public/resumeData'
-
+import { main, portfolio, resume, testimonials } from '../public/resumeData.json'
+//import { main, portfolio, resume, testimonials } from './data/resumeData.json';
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
-      
-      resumeData:{
+
+      resumeData: {
         main: main,
         portfolio: portfolio,
         resume: resume,
