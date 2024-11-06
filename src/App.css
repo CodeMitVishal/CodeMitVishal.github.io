@@ -1,0 +1,44 @@
+#portfolio-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.portfolio-item {
+    flex: 1 1 30%;
+    /* Adjust this to control the width of each item */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    min-width: 250px;
+    /* Minimum width to prevent items from shrinking too small */
+}
+
+.item-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    height: 100%;
+    /* Ensures equal height */
+}
+
+.portfolio-item-meta h5 {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+.portfolio-item-meta p {
+    font-size: 1.2em;
+    color: #007b8f;
+    /* Use a consistent color */
+    font-weight: 500;
+    text-align: center;
+}
