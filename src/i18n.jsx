@@ -12,6 +12,7 @@ const LOADERS = {
   es: () => import("./i18n/es.js"),
   it: () => import("./i18n/it.js"),
   hi: () => import("./i18n/hi.js"),
+  kn: () => import("./i18n/kn.js"),
   bn: () => import("./i18n/bn.js"),
   mr: () => import("./i18n/mr.js"),
   te: () => import("./i18n/te.js"),

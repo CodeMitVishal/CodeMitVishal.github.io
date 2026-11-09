@@ -2,7 +2,7 @@
 
 **Live:** https://codemitvishal.github.io/
 
-Personal portfolio of Vishal Singh, hands-on Software Engineer (C# / .NET APIs, event-driven back ends, Angular, Azure & Kubernetes, AI agents): experience, case studies, open-source projects, Microsoft certifications, education, master's thesis, teaching, and an AI assistant that answers questions about all of it, in 11 hand-translated languages.
+Personal portfolio of Vishal Singh, hands-on Software Engineer (C# / .NET APIs, event-driven back ends, Angular, Azure & Kubernetes, AI agents): experience, case studies, open-source projects, Microsoft certifications, education, master's thesis, teaching, and an AI assistant that answers questions about all of it, in 12 hand-translated languages.
 
 ## Architecture
 
@@ -39,7 +39,7 @@ sequenceDiagram
   participant S as Site (GitHub Pages)
   participant G as Google Translate
   V->>P: opens 🌐, searches or browses Europe / India
-  alt hand-translated language (DE, FR, ES, IT, HI, BN, MR, TE, TA, GU)
+  alt hand-translated language (DE, FR, ES, IT, HI, KN, BN, MR, TE, TA, GU)
     P->>S: load src/i18n/<code>.js (only this one file)
     S-->>P: dictionary
     P-->>V: whole page switches at once, choice remembered
@@ -55,14 +55,14 @@ sequenceDiagram
   - a globe button in the header opens it;
   - there is search across all languages, the most-used languages come first, and "More languages" sits behind a disclosure;
   - it works with the keyboard (focus moves into the panel; Escape closes it) and as a bottom sheet on phones.
-- **Hand-translated:** English, Deutsch, Français, Español, Italiano, हिन्दी, বাংলা, मराठी, తెలుగు, தமிழ், ગુજરાતી.
+- **Hand-translated:** English, Deutsch, Français, Español, Italiano, हिन्दी, ಕನ್ನಡ, বাংলা, मराठी, తెలుగు, தமிழ், ગુજરાતી.
   - Product and technology names (Azure, Service Bus, Clean Architecture, …) stay in their original form, as engineers write them.
   - Indian languages use the respectful form when referring to Vishal.
   - Colleague quotes and the thesis title stay in their original English, and the page says so.
 - **Every other European and Indian language** opens Google's machine translation of the site. The picker marks these with **G ↗** and says they may contain errors.
 - **Rich text inside translations** uses `**bold**`, `*italic*` and `{placeholder}` (for links), so each language can use its own word order.
 - **Language switches are atomic.** The page keeps the current language until the new dictionary has loaded, so text never appears half in one language and half in another.
-- **Fonts:** Indian scripts use Noto Sans/Serif (Devanagari, Bengali, Tamil, Telugu, Gujarati) with taller line spacing; Google Fonts only downloads a script's font when that script appears on the page.
+- **Fonts:** Indian scripts use Noto Sans/Serif (Devanagari, Kannada, Bengali, Tamil, Telugu, Gujarati) with taller line spacing; Google Fonts only downloads a script's font when that script appears on the page.
 
 To add or change text: edit the English in `data.js` or a component, then add the same English string with its translation to each file in `src/i18n/`. Any string without a translation simply stays in English. In the browser console, `window.__i18nMissing` lists anything not yet translated.
 
@@ -74,7 +74,7 @@ sequenceDiagram
   participant C as Chat panel (browser)
   participant W as Cloudflare Worker /chat
   participant A as Workers AI (Gemma 4)
-  V->>C: question (any of the 11 languages)
+  V->>C: question (any of the 12 languages)
   C->>W: POST {lang, last 10 messages}
   W->>W: allowed origin? rate limit? size limits? only user/assistant roles
   W->>W: knowledge.js picks the relevant website sections
