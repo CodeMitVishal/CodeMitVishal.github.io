@@ -4,26 +4,17 @@ const BASE = import.meta.env?.BASE_URL ?? "/"; // "/" when read by Node scripts 
 export const profile = {
   name: "Vishal Singh",
   role: "Software Engineer",
-  statement: "I build C# back ends that talk in events, Angular front ends, and the pipelines that ship them to Azure.",
-  headline: ["C# / .NET APIs", "Event-driven back ends", "Angular", "Azure & Kubernetes", "AI agents"],
   location: "Augsburg, Germany",
+  availableFrom: "1 March 2027", // shown on the site and used by the AI assistant
+  summary: "Seven years of production code: REST APIs, event-driven systems with Service Bus and the Outbox pattern, data processors, AI agent back ends, and the CI/CD that keeps them honest.",
   email: "vishal8840906676@gmail.com",
   photo: `${BASE}vishal.jpg`,
-  intro:
-    "I write the code: C# / .NET REST APIs, event-driven back ends with Service Bus and the Outbox pattern, data processors and pipelines, " +
-    "AI agent back ends and Angular front ends, in Clean Architecture. Then I ship and run it on Azure and Kubernetes with CI/CD.",
   about: [
     "Hands-on software engineer and Azure Solutions Architect Expert with 7+ years of writing production code, from .NET and Angular product teams in India to cloud products at baramundi software in Augsburg.",
     "Most of my day is code: C# / .NET Web APIs and REST APIs, data processors and change trackers, events over Service Bus and Event Hubs (event-driven architecture, Outbox pattern), back ends for AI agents, and Angular front ends, structured with Clean Architecture. I build the CI/CD pipelines that ship it and review my teammates' pull requests.",
     "I have led teams of 5–6 developers on insurance platforms for global clients such as Samsung and Assurant, and built GDPR-compliant systems for the EU market.",
     "Today I work on a cloud platform that keeps company devices secure and up to date (AKS, IoT Hub, Event Hubs), and I lead AI adoption: AI agents, RAG, MCP, and coaching teams on GitHub Copilot and Claude.",
     "Outside work I teach: I founded The Growth Club, a learning community of 2,000+ members, and publish free Python and Git courses on my YouTube channel CodeMitVishal.",
-  ],
-  stats: [
-    { value: "7+", label: "years writing production code" },
-    { value: "7", label: "certifications (6 Microsoft)" },
-    { value: "5–6", label: "developers led" },
-    { value: "~4", label: "years hands-on with AI" },
   ],
   social: [
     { name: "LinkedIn", url: "https://www.linkedin.com/in/vishal-s-694502112/", icon: "linkedin" },

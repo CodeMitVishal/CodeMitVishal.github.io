@@ -12,7 +12,9 @@
     "preview": "vite preview",
     "deploy": "vite build && gh-pages -d dist -b gh-pages -m \"Deploy portfolio\"",
     "assistant:dev": "npx wrangler@4 dev --config worker/wrangler.toml --remote",
-    "assistant:deploy": "npx wrangler@4 deploy --config worker/wrangler.toml"
+    "assistant:deploy": "npx wrangler@4 deploy --config worker/wrangler.toml",
+    "check:secrets": "node scripts/check-secrets.mjs --all",
+    "prepare": "git config core.hooksPath .githooks || true"
   },
   "dependencies": {
     "react": "^18.3.1",

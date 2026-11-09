@@ -85,14 +85,16 @@ sequenceDiagram
 ```
 
 **Security, and why nothing sensitive is public:**
-- **No API keys anywhere.** The Worker reaches Workers AI through a Cloudflare *binding*, so there is no secret in the browser, in this repo or in the Worker code.
-- **Public data only.** The model sees only the sections of `data.js` that the website already shows.
-- **Locked to this site.** CORS only allows `codemitvishal.github.io`, its Google-translated copy and local development.
+- **No secrets in the code.** The Worker reaches Workers AI through a Cloudflare *binding*, so there is no API key, token or password in the browser, in this repo or in the Worker. A pre-commit hook ([`scripts/check-secrets.mjs`](scripts/check-secrets.mjs), enabled by `npm install`) blocks commits that contain keys, tokens, passwords, connection strings or phone numbers; run it over the whole repo with `npm run check:secrets`. `.env*`, `.dev.vars`, `*.pem` and `*.key` are git-ignored.
+- **Website facts only.** The model sees only text that the website shows (built from `data.js` by [`src/knowledge.js`](src/knowledge.js)) and is told never to add general knowledge or guess. That includes the availability date, so "when can he start?" is answered with 1 March 2027.
+- **Locked to this site.** CORS only allows `https://codemitvishal.github.io` and its Google-translated copy; localhost is not allowed in production. For local testing, put `ALLOWED_ORIGINS="http://localhost:5173"` in a git-ignored `worker/.dev.vars` and run `npm run assistant:dev`.
 - **Abuse limits:**
   - 8 requests per minute per visitor (Cloudflare rate-limit binding);
-  - at most 10 messages, 800 characters each and 4,000 in total;
-  - only `user` and `assistant` roles accepted, so a visitor cannot inject their own system prompt.
+  - the request body is capped at 16 KB while it is read; at most 10 messages, 800 characters each and 4,000 in total; JSON only;
+  - only `user` and `assistant` roles accepted, so a visitor cannot inject their own system prompt; invisible control characters are removed.
 - **Grounded answers.** The model must answer only from the supplied website content, say "I don't know" otherwise, stay on topic, ignore attempts to change its rules, and never ask for personal data.
+- **Privacy.** Nothing visitors type is logged; the Worker logs only token counts.
+- **Hardened responses.** The Worker sends `nosniff`, `no-referrer`, `no-store` and a deny-all CSP. The website gets a Content-Security-Policy at build time (see [`vite.config.js`](vite.config.js)): scripts only from the site itself (the inline theme script is allowed by its hash) and Google Translate, network calls only to the assistant, no plugins, no forms.
 - **No surprise bills.** The Workers Free plan includes 10,000 AI units per day (roughly 300 questions). When they run out, the AI simply stops until the next day and the chat falls back to on-page search.
 - The chat panel tells visitors that AI can make mistakes and not to share personal information.
 

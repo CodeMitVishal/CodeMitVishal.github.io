@@ -27,7 +27,6 @@ export default {
     "Sieben Jahre Produktionscode: REST-APIs, eventgetriebene Systeme mit Service Bus und dem Outbox-Pattern, Datenprozessoren, Backends für KI-Agenten und die CI/CD, die alles zuverlässig hält.",
   "Write to me": "Schreiben Sie mir",
   "Portrait of Vishal Singh": "Porträt von Vishal Singh",
-  "Augsburg, Germany · open to new roles": "Augsburg, Deutschland · offen für neue Aufgaben",
   "Now": "Aktuell",
   "Before": "Davor",
   "Certified": "Zertifiziert",
@@ -409,4 +408,6 @@ export default {
   "The AI is not reachable right now.": "Die KI ist gerade nicht erreichbar.",
   "Close": "Schließen",
   "Send": "Senden",
+  "Augsburg, Germany · available from 1 March 2027": "Augsburg, Deutschland · verfügbar ab 1. März 2027",
+  "Available to start a new role on 1 March 2027.": "Verfügbar für eine neue Stelle ab dem 1. März 2027.",
 };

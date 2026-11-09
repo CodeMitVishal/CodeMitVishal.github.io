@@ -9,3 +9,12 @@ worker/.wrangler/
 worker/.out/
 .wrangler/
 worker/worker/
+
+# secrets and local overrides: never commit
+.env
+.env.*
+*.local
+.dev.vars
+worker/.dev.vars
+*.pem
+*.key

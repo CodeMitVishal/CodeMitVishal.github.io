@@ -18,5 +18,9 @@ namespace_id = "1001"
   period = 60
 
 [vars]
-ALLOWED_ORIGINS = "https://codemitvishal.github.io,https://codemitvishal-github-io.translate.goog,http://localhost:5173,http://localhost:4173"
+ALLOWED_ORIGINS = "https://codemitvishal.github.io,https://codemitvishal-github-io.translate.goog"
 MODEL = "@cf/google/gemma-4-26b-a4b-it"
+
+# Local testing only: create worker/.dev.vars (git-ignored) with
+#   ALLOWED_ORIGINS = "http://localhost:5173,http://localhost:4173"
+# `wrangler dev` reads it; it is never deployed or committed.

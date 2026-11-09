@@ -28,7 +28,6 @@ export default {
     "सात साल का प्रोडक्शन कोड: REST API, Service Bus और Outbox पैटर्न वाले इवेंट-ड्रिवन सिस्टम, डेटा प्रोसेसर, AI एजेंट बैकएंड, और वह CI/CD जो सब कुछ भरोसेमंद रखता है।",
   "Write to me": "मुझे लिखें",
   "Portrait of Vishal Singh": "विशाल सिंह का चित्र",
-  "Augsburg, Germany · open to new roles": "आउग्सबर्ग, जर्मनी · नई भूमिकाओं के लिए उपलब्ध",
   "Now": "अभी",
   "Before": "पहले",
   "Certified": "प्रमाणित",
@@ -403,4 +402,6 @@ export default {
   "AI agent back ends": "AI एजेंट बैकएंड",
   "AI governance": "AI गवर्नेंस",
   "CI/CD pipelines": "CI/CD पाइपलाइन",
+  "Augsburg, Germany · available from 1 March 2027": "आउग्सबर्ग, जर्मनी · 1 मार्च 2027 से उपलब्ध",
+  "Available to start a new role on 1 March 2027.": "1 मार्च 2027 से नई भूमिका के लिए उपलब्ध।",
 };

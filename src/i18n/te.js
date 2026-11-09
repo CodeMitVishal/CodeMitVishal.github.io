@@ -22,7 +22,6 @@ export default {
   "Seven years of production code: REST APIs, event-driven systems with Service Bus and the Outbox pattern, data processors, AI agent back ends, and the CI/CD that keeps them honest.": "ఏడు సంవత్సరాల ప్రొడక్షన్ కోడ్: REST APIలు, Service Bus మరియు Outbox ప్యాటర్న్‌తో ఈవెంట్-డ్రివెన్ సిస్టమ్‌లు, డేటా ప్రాసెసర్లు, AI ఏజెంట్ బ్యాకెండ్‌లు, అన్నింటినీ నమ్మదగినవిగా ఉంచే CI/CD.",
   "Write to me": "నాకు రాయండి",
   "Portrait of Vishal Singh": "విశాల్ సింగ్ చిత్రం",
-  "Augsburg, Germany · open to new roles": "ఆగ్స్‌బర్గ్, జర్మనీ · కొత్త అవకాశాలకు సిద్ధం",
   "Now": "ప్రస్తుతం",
   "Before": "ఇంతకు ముందు",
   "Certified": "సర్టిఫైడ్",
@@ -306,4 +305,6 @@ export default {
   "The AI is not reachable right now.": "AI ప్రస్తుతం అందుబాటులో లేదు.",
   "Close": "మూసివేయండి",
   "Send": "పంపండి",
+  "Augsburg, Germany · available from 1 March 2027": "ఆగ్స్‌బర్గ్, జర్మనీ · 1 మార్చి 2027 నుంచి అందుబాటులో",
+  "Available to start a new role on 1 March 2027.": "1 మార్చి 2027 నుంచి కొత్త బాధ్యతలో చేరడానికి అందుబాటులో ఉన్నాను.",
 };

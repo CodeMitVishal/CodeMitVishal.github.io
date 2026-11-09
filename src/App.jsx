@@ -162,7 +162,7 @@ function Hero() {
           <p className="kicker">{t("Vishal Singh")} — {t(profile.role)}, {t(profile.location)}</p>
           <h1 id="hero-h">{tr("I build C# back ends that *talk in events*, Angular front ends, and the pipelines that *ship them* to Azure.")}</h1>
           <p className="hero-sub">
-            {t("Seven years of production code: REST APIs, event-driven systems with Service Bus and the Outbox pattern, data processors, AI agent back ends, and the CI/CD that keeps them honest.")}
+            {t(profile.summary)}
           </p>
           <div className="hero-actions">
             <a className="cta" href={`mailto:${profile.email}`}>{t("Write to me")}</a>
@@ -172,7 +172,7 @@ function Hero() {
         </div>
         <figure className="portrait">
           <img src={profile.photo} alt={t("Portrait of Vishal Singh")} width="440" height="440" fetchpriority="high" />
-          <figcaption>{t("Augsburg, Germany · open to new roles")}</figcaption>
+          <figcaption>{t("Augsburg, Germany · available from 1 March 2027")}</figcaption>
         </figure>
       </div>
 
@@ -469,7 +469,7 @@ function Contact() {
           <a href={`mailto:${profile.email}`}>{profile.email}</a>
           <button onClick={copy} aria-live="polite"><Icon name={copied ? "check" : "copy"} size={16} />{copied ? t("Copied") : t("Copy")}</button>
         </div>
-        <p className="contact-note">{t("I usually reply within one or two working days. Based in Augsburg, Germany (CET).")}</p>
+        <p className="contact-note"><b>{t("Available to start a new role on 1 March 2027.")}</b> {t("I usually reply within one or two working days. Based in Augsburg, Germany (CET).")}</p>
         <ul className="elsewhere">
           {profile.social.filter((s) => s.icon !== "mail").map((s) => (
             <li key={s.name}><a href={s.url} {...ext}>{s.name} <span aria-hidden="true">↗</span></a></li>

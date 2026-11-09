@@ -1,8 +1,7 @@
 /* Turns the public website content (data.js) into small text chunks the assistant can search.
-   Used in two places:
-   - the browser, for the on-page search fallback;
-   - scripts/build-knowledge.mjs, which writes worker/src/knowledge.json for the Cloudflare Worker.
-   Only content that is already public on the website goes in here. */
+   Used in two places: the browser (on-page search fallback) and the Cloudflare Worker (AI context).
+   RULE: only text that is visible on the website goes in here, nothing more. The assistant must
+   never know anything a visitor could not read on the page. */
 import {
   profile, experience, workProjects, courses, repos, skills, certifications,
   education, thesis, testimonials, leadership, languages,
@@ -15,13 +14,13 @@ export function buildKnowledge() {
   const add = (id, title, text) => chunks.push({ id, title, text });
 
   add("profile", "Profile", lines(
-    `${profile.name} is a ${profile.role} based in ${profile.location}. He is open to new roles.`,
-    profile.intro,
+    `${profile.name} is a ${profile.role} based in ${profile.location}.`,
+    `Availability: he is open to new roles and available to start on ${profile.availableFrom} (he can join a new company from ${profile.availableFrom}).`,
+    profile.summary,
     ...profile.about,
-    `Key numbers: ${profile.stats.map((s) => `${s.value} ${s.label}`).join("; ")}.`,
   ));
   add("contact", "Contact", lines(
-    `Email: ${profile.email}. He usually replies within one or two working days.`,
+    `Email: ${profile.email}. He usually replies within one or two working days. Available to start on ${profile.availableFrom}.`,
     ...profile.social.filter((s) => s.icon !== "mail").map((s) => `${s.name}: ${s.url}`),
     "Website: https://codemitvishal.github.io/",
   ));
@@ -36,7 +35,7 @@ export function buildKnowledge() {
 
   workProjects.forEach((p, i) => add(`project-${i}`, `Project: ${p.title}`, lines(
     `${p.title} (${p.org}).`,
-    p.text,
+    !p.featured && p.text,  // featured projects show their story instead of this summary
     p.story && `Problem: ${p.story.challenge}`,
     p.story && `What he built: ${p.story.approach}`,
     p.story && `Outcome: ${p.story.result}`,

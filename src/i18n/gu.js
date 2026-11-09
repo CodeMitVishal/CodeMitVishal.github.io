@@ -22,7 +22,6 @@ export default {
   "Seven years of production code: REST APIs, event-driven systems with Service Bus and the Outbox pattern, data processors, AI agent back ends, and the CI/CD that keeps them honest.": "સાત વર્ષનો પ્રોડક્શન કોડ: REST API, Service Bus અને Outbox પેટર્ન સાથેની ઇવેન્ટ-ડ્રિવન સિસ્ટમ્સ, ડેટા પ્રોસેસર, AI એજન્ટના બેકએન્ડ, અને બધું ભરોસાપાત્ર રાખતું CI/CD.",
   "Write to me": "મને લખો",
   "Portrait of Vishal Singh": "વિશાલ સિંહનું ચિત્ર",
-  "Augsburg, Germany · open to new roles": "આઉગ્સબર્ગ, જર્મની · નવી તકો માટે તૈયાર",
   "Now": "હાલમાં",
   "Before": "અગાઉ",
   "Certified": "પ્રમાણિત",
@@ -306,4 +305,6 @@ export default {
   "The AI is not reachable right now.": "AI હાલમાં ઉપલબ્ધ નથી.",
   "Close": "બંધ કરો",
   "Send": "મોકલો",
+  "Augsburg, Germany · available from 1 March 2027": "આઉગ્સબર્ગ, જર્મની · 1 માર્ચ 2027 થી ઉપલબ્ધ",
+  "Available to start a new role on 1 March 2027.": "1 માર્ચ 2027 થી નવી ભૂમિકા માટે ઉપલબ્ધ.",
 };
