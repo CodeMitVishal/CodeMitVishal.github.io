@@ -356,7 +356,7 @@ function Education() {
 
 function Teaching() {
   return (
-    <Section id="teaching" num="06" title="Teaching" note="I learn by explaining. Everything here is free.">
+    <Section id="teaching" num="06" title={<>Teaching &amp; leadership</>} note="I learn by explaining and lead by doing: free courses, a learning community, and years of leading teams and volunteers.">
       <ul className="index">
         {courses.map((c) => (
           <li key={c.title}>
