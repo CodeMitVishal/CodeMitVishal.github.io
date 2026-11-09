@@ -36,6 +36,9 @@ export const experience = [
   {
     role: "Software Engineer – Cloud Products",
     company: "baramundi software GmbH",
+    logo: `${BASE}logos/baramundi.svg`,
+    url: "https://www.baramundi.com/en/",
+    current: true,
     place: "Augsburg, Germany",
     period: "03/2025 – Present",
     context: "baramundi Endpoint Management: software that keeps company devices secure, patched and up to date.",
@@ -54,6 +57,8 @@ export const experience = [
   {
     role: "Full-Stack Developer Lead / Team Lead",
     company: "RDA Labs Pvt Ltd",
+    logo: `${BASE}logos/rdalabs.svg`,
+    url: "https://rdalabs.com/",
     place: "India",
     period: "02/2020 – 12/2023",
     award: "Top Performer",
@@ -71,7 +76,9 @@ export const experience = [
   },
   {
     role: ".NET Developer / Full-Stack Developer",
-    company: "Euromonitor Research and Consulting",
+    company: "Euromonitor International",
+    logo: `${BASE}logos/euromonitor.svg`,
+    url: "https://www.euromonitor.com/",
     place: "India",
     period: "09/2018 – 01/2020",
     award: "Champion of the Month",
@@ -87,6 +94,8 @@ export const experience = [
   {
     role: "Engineer Trainee",
     company: "Centre for Development of Advanced Computing (C-DAC)",
+    logo: `${BASE}logos/cdac.png`,
+    url: "https://www.cdac.in/",
     place: "India",
     period: "02/2018 – 08/2018",
     points: ["Built the API (test-driven) and student screens for a campus placement web app, and set up its deployment on TFS."],
@@ -99,27 +108,37 @@ export const workProjects = [
   {
     title: "Cloud Device Management Platform",
     org: "baramundi software · 2025–now",
+    logo: `${BASE}logos/baramundi.svg`,
     text: "Cloud services for baramundi Endpoint Management: devices sync securely with the cloud, events never get lost, and dashboards fix unhealthy devices automatically.",
     tags: ["AKS", "KEDA", "ArgoCD", "IoT Hub", "Event Hubs", "GraphQL"],
     icon: "cloud",
+    featured: true,
+    story: { challenge: "Company devices must stay patched, configured and healthy, and every change has to reach the cloud reliably.", approach: "Microservices on AKS that scale with KEDA and ship through ArgoCD; device settings sync via IoT Hub Device Twin; Event Hubs and Service Bus with the Outbox pattern.", result: "Settings sync securely at scale, no event gets lost, and dashboards spot unhealthy devices and fix them automatically." },
   },
   {
     title: "AI Agents & AI Adoption",
     org: "baramundi software · 2025–now",
+    logo: `${BASE}logos/baramundi.svg`,
     text: "AI agent prototypes that use tools and search company knowledge, plus a company-wide AI adoption programme with risk assessment and coaching.",
     tags: ["Azure AI Foundry", "Semantic Kernel", "MCP", "RAG", "Copilot"],
     icon: "spark",
+    featured: true,
+    story: { challenge: "Teams want to use AI, but need useful, safe use cases and clear governance first.", approach: "AI agent prototypes that call tools and search company data (Azure AI Foundry, Semantic Kernel, MCP, RAG), plus risk and governance assessments.", result: "A company-wide AI adoption programme, with teams coached on GitHub Copilot and Claude." },
   },
   {
     title: "Global Insurance Sales Platform",
     org: "Assurant / Samsung Care+ · RDA Labs",
+    logo: `${BASE}logos/rdalabs.svg`,
     text: "Insurance platform for mobile devices sold in the UK, Italy, Germany and Spain, built GDPR-compliant with consent management, Key Vault and audit logging.",
     tags: [".NET", "Angular", "Azure", "Terraform", "GDPR"],
     icon: "shield",
+    featured: true,
+    story: { challenge: "Selling device insurance for Samsung customers in four EU countries, under GDPR.", approach: "Led 5–6 developers on .NET and Angular on Azure, with Terraform infrastructure and CI/CD quality and security gates (SonarCloud).", result: "A GDPR-compliant platform in the UK, Italy, Germany and Spain, with consent management, Key Vault and audit logging." },
   },
   {
     title: "Underwriting Risk-Data Hub",
     org: "Insurance client · RDA Labs",
+    logo: `${BASE}logos/rdalabs.svg`,
     text: "Connected risk-data providers Verisk and LexisNexis to an underwriting tool so underwriters get decision-ready data in one place.",
     tags: ["APIs", "Integration", "Azure Functions"],
     icon: "chart",
@@ -127,6 +146,7 @@ export const workProjects = [
   {
     title: "Graduate Face Recognition",
     org: "GradImages · RDA Labs",
+    logo: `${BASE}logos/rdalabs.svg`,
     text: "Azure AI face recognition that finds each graduate in thousands of ceremony photos.",
     tags: ["Azure AI", "Computer Vision", ".NET"],
     icon: "face",
@@ -134,6 +154,7 @@ export const workProjects = [
   {
     title: "Financial Reconciliation & Large Imports",
     org: "KPK FinServ · RDA Labs",
+    logo: `${BASE}logos/rdalabs.svg`,
     text: "Financial reconciliation work, including loading Excel files with 1.5M+ rows into Cosmos DB with Azure Durable Functions.",
     tags: ["Durable Functions", "Cosmos DB", "C#"],
     icon: "table",
@@ -141,6 +162,7 @@ export const workProjects = [
   {
     title: "Passport Market Research Platform",
     org: "Euromonitor International",
+    logo: `${BASE}logos/euromonitor.svg`,
     text: "User and subscription features (APIs and screens) for Passport, Euromonitor's global market-research platform.",
     tags: [".NET Core", "Angular", "Azure"],
     icon: "globe",
@@ -149,6 +171,7 @@ export const workProjects = [
   {
     title: "IKEA Market Insights",
     org: "Euromonitor International",
+    logo: `${BASE}logos/euromonitor.svg`,
     text: "A price-comparison tool that helps IKEA understand competitor prices across markets.",
     tags: [".NET Core", "Angular", "Data"],
     icon: "tag",
@@ -156,6 +179,7 @@ export const workProjects = [
   {
     title: "Campus Placement Portal",
     org: "C-DAC",
+    logo: `${BASE}logos/cdac.png`,
     text: "Test-driven API and student screens for a campus placement web application, deployed with TFS.",
     tags: [".NET", "TDD", "TFS"],
     icon: "school",
@@ -188,12 +212,12 @@ export const courses = [
 const gh = (name) => `https://github.com/CodeMitVishal/${name}`;
 export const repos = [
   { name: "python-pro", text: "Free advanced Python course: from foundations to pro, web development and AI.", lang: "Python", year: 2026, cats: ["Courses", "Python", "AI"] },
-  { name: "git-pro", text: "Git from zero to hero: lessons with real Git output, exercises and interview questions.", lang: "Python", year: 2026, cats: ["Courses"] },
+  { name: "git-pro", text: "Git from zero to hero: lessons with real Git output, exercises and interview questions.", lang: "Shell", year: 2026, cats: ["Courses"] },
   { name: "python-foundations", text: "Code, exercises and slides for the Python Foundations course.", lang: "Python", year: 2026, cats: ["Courses", "Python"] },
   { name: "UniLingual", text: "One tool for all tongues: a multilingual translation tool.", lang: "—", year: 2025, cats: ["Full stack", "AI"] },
   { name: "UniLingual.Api", text: "The API behind UniLingual.", lang: "TypeScript", year: 2025, cats: ["Full stack", "AI"] },
   { name: "Insurance.API", text: "An insurance domain REST API in .NET.", lang: "C#", year: 2025, cats: [".NET"] },
-  { name: "VishalPortfolio-React", text: "This website: a React portfolio built with Vite.", lang: "JavaScript", year: 2026, cats: ["Frontend"] },
+  { name: "cloudfolio", text: "This website: my portfolio, built with React and Vite.", lang: "JavaScript", year: 2026, cats: ["Frontend"] },
   { name: "GangOfFour.DesignPatterns", text: "The classic Gang of Four design patterns implemented in C#.", lang: "C#", year: 2024, cats: [".NET"] },
   { name: "Blazor.App.POC", text: "Proof of concept of a Blazor web application.", lang: "HTML", year: 2024, cats: [".NET", "Frontend"] },
   { name: "Python.FastAPI", text: "REST endpoints built with Python FastAPI.", lang: "Python", year: 2024, cats: ["Python"] },
@@ -239,20 +263,29 @@ export const skills = [
   { title: "Ways of working", items: ["Scrum (CSM)", "Jira", "Code reviews", "Mentoring", "Stakeholder demos"] },
 ];
 
+// Official Microsoft badges and certification pages (learn.microsoft.com).
+// To link your personal verification, paste your Microsoft Learn transcript share link into `transcript`.
+export const transcript = "";
 export const certifications = [
-  { name: "Azure Solutions Architect Expert", issuer: "Microsoft" },
-  { name: "Agentic AI Business Solutions Architect (AB-100)", issuer: "Microsoft" },
-  { name: "Azure AI Apps and Agents Developer Associate", issuer: "Microsoft" },
-  { name: "Azure AI Engineer Associate", issuer: "Microsoft" },
-  { name: "Azure Developer Associate", issuer: "Microsoft" },
-  { name: "AI Transformation Leader", issuer: "Microsoft" },
-  { name: "Certified ScrumMaster (CSM)", issuer: "Scrum Alliance" },
+  { name: "Azure Solutions Architect Expert", issuer: "Microsoft", level: "Expert", exam: "AZ-305", badge: `${BASE}badges/ms-expert.svg`, url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-solutions-architect/" },
+  { name: "Agentic AI Business Solutions Architect", issuer: "Microsoft", level: "Expert", exam: "AB-100", badge: `${BASE}badges/ms-expert.svg`, url: "https://learn.microsoft.com/en-us/credentials/certifications/agentic-ai-business-solutions-architect/" },
+  { name: "Azure AI Apps and Agents Developer Associate", issuer: "Microsoft", level: "Associate", exam: "AI-103", badge: `${BASE}badges/ms-associate.svg`, url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-apps-and-agents-developer-associate/" },
+  { name: "Azure AI Engineer Associate", issuer: "Microsoft", level: "Associate", exam: "AI-102", badge: `${BASE}badges/ms-associate.svg`, url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/" },
+  { name: "Azure Developer Associate", issuer: "Microsoft", level: "Associate", exam: "AZ-204", badge: `${BASE}badges/ms-associate.svg`, url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-developer/" },
+  { name: "AI Transformation Leader", issuer: "Microsoft", level: "Business", exam: "AB-731", badge: `${BASE}badges/ms-ai-transformation-leader.svg`, url: "https://learn.microsoft.com/en-us/credentials/certifications/ai-transformation-leader/" },
+  { name: "Certified ScrumMaster (CSM)", issuer: "Scrum Alliance", level: "Agile", exam: "CSM", badge: `${BASE}badges/scrum-alliance.png`, url: "https://www.scrumalliance.org/get-certified/scrum-master-track/certified-scrummaster" },
 ];
 
 export const education = [
-  { degree: "MBA – IT Project Management", school: "IU International University (IUBH), Berlin, Germany", period: "01/2024 – 02/2025", note: "Thesis on AI for risk management in IT projects (below)." },
-  { degree: "Post Graduate Diploma in Advanced Computing", school: "C-DAC, Bangalore, India", period: "02/2018 – 08/2018", note: "Advanced computing, software engineering and high-performance applications." },
-  { degree: "B.Tech – Information Technology", school: "Dr. R.M.L. Avadh University, Faizabad, India", period: "2013 – 2017", note: "Software engineering, algorithms and data structures." },
+  { degree: "MBA – IT Project Management", school: "IU International University (IUBH), Berlin, Germany",
+    logo: `${BASE}logos/iu.png`,
+    url: "https://www.iu.org/", period: "01/2024 – 02/2025", note: "Thesis on AI for risk management in IT projects (below)." },
+  { degree: "Post Graduate Diploma in Advanced Computing", school: "C-DAC, Bangalore, India",
+    logo: `${BASE}logos/cdac.png`,
+    url: "https://www.cdac.in/", period: "02/2018 – 08/2018", note: "Advanced computing, software engineering and high-performance applications." },
+  { degree: "B.Tech – Information Technology", school: "Dr. R.M.L. Avadh University, Faizabad, India",
+    logo: `${BASE}logos/avadh-university.png`,
+    url: "https://www.rmlau.ac.in/", period: "2013 – 2017", note: "Software engineering, algorithms and data structures." },
 ];
 
 export const thesis = {

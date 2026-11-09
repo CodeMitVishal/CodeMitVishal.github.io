@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import {
   profile, experience, workProjects, courses, repos, skills,
-  certifications, education, thesis, testimonials, leadership,
+  certifications, transcript, education, thesis, testimonials, leadership,
 } from "./data.js";
 
 /* ---------------------------------------------------------------- icons */
@@ -43,6 +43,11 @@ function Icon({ name, size = 18 }) {
   );
 }
 
+PATHS.copy = "M9 9h11v11H9zM5 15H4V4h11v1";
+PATHS.check = "M5 12l5 5L20 7";
+PATHS.arrow = "M5 12h14m-6-6 6 6-6 6";
+PATHS.verified = "M12 2l2.6 2.1 3.3-.3.9 3.2 2.9 1.7-1.2 3.1 1.2 3.1-2.9 1.7-.9 3.2-3.3-.3L12 22l-2.6-2.1-3.3.3-.9-3.2-2.9-1.7 1.2-3.1L2.3 9.1l2.9-1.7.9-3.2 3.3.3zM8.5 12l2.5 2.5 4.5-5";
+
 /* ---------------------------------------------------------------- hooks */
 function useTheme() {
   const [theme, setTheme] = useState(() => document.documentElement.dataset.theme ||
@@ -56,18 +61,18 @@ function useTheme() {
 
 function useReveal() {
   useEffect(() => {
-    const els = document.querySelectorAll(".reveal");
+    const els = document.querySelectorAll(".reveal:not(.visible)");
     const io = new IntersectionObserver((entries) => entries.forEach((e) => {
       if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
-    }), { threshold: 0.08 });
+    }), { threshold: 0.06 });
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
   });
 }
 
 const SECTIONS = [
-  ["about", "About"], ["experience", "Experience"], ["projects", "Projects"], ["skills", "Skills"],
-  ["education", "Education"], ["thesis", "Thesis"], ["teaching", "Teaching"], ["contact", "Contact"],
+  ["experience", "Experience"], ["projects", "Projects"], ["certifications", "Certifications"],
+  ["skills", "Skills"], ["education", "Education"], ["teaching", "Teaching"],
 ];
 
 function useActiveSection() {
@@ -75,31 +80,62 @@ function useActiveSection() {
   useEffect(() => {
     const io = new IntersectionObserver((entries) => entries.forEach((e) => {
       if (e.isIntersecting) setActive(e.target.id);
-    }), { rootMargin: "-45% 0px -50% 0px" });
-    SECTIONS.forEach(([id]) => { const el = document.getElementById(id); if (el) io.observe(el); });
+    }), { rootMargin: "-40% 0px -55% 0px" });
+    [...SECTIONS.map(([id]) => id), "contact"].forEach((id) => { const el = document.getElementById(id); if (el) io.observe(el); });
     return () => io.disconnect();
   }, []);
   return active;
+}
+
+/* ---------------------------------------------------------------- small parts */
+function Logo({ src, alt, size = 48 }) {
+  return (
+    <span className="logo-tile" style={{ width: size, height: size }}>
+      <img src={src} alt={alt} loading="lazy" width={size} height={size} />
+    </span>
+  );
+}
+
+function Chips({ items }) {
+  return <ul className="chips" aria-label="Technologies">{items.map((t) => <li className="chip" key={t}>{t}</li>)}</ul>;
+}
+
+function Section({ id, eyebrow, title, intro, children, tint }) {
+  return (
+    <section id={id} className={tint ? "section tint" : "section"} aria-labelledby={`${id}-title`}>
+      <div className="container">
+        <header className="section-head reveal">
+          <p className="eyebrow">{eyebrow}</p>
+          <h2 id={`${id}-title`}>{title}</h2>
+          {intro && <p className="lead">{intro}</p>}
+        </header>
+        {children}
+      </div>
+    </section>
+  );
 }
 
 /* ---------------------------------------------------------------- layout */
 function Nav({ theme, toggleTheme }) {
   const [open, setOpen] = useState(false);
   const active = useActiveSection();
+  const close = () => setOpen(false);
   return (
     <header className="nav">
       <div className="container nav-inner">
-        <a href="#top" className="brand" onClick={() => setOpen(false)}><span className="brand-mark">VS</span> Vishal Singh</a>
-        <nav className={open ? "nav-links open" : "nav-links"} aria-label="Main">
+        <a href="#top" className="brand" onClick={close} aria-label="Vishal Singh, back to top">
+          <span className="brand-mark" aria-hidden="true">VS</span><span>Vishal Singh</span>
+        </a>
+        <nav className={open ? "nav-links open" : "nav-links"} aria-label="Sections">
           {SECTIONS.map(([id, label]) => (
-            <a key={id} href={`#${id}`} className={active === id ? "active" : ""} onClick={() => setOpen(false)}>{label}</a>
+            <a key={id} href={`#${id}`} className={active === id ? "active" : ""} aria-current={active === id ? "true" : undefined} onClick={close}>{label}</a>
           ))}
         </nav>
         <div className="nav-actions">
-          <button className="icon-btn" onClick={toggleTheme} aria-label="Toggle dark mode">
+          <button className="icon-btn" onClick={toggleTheme} aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}>
             <Icon name={theme === "dark" ? "sun" : "moon"} />
           </button>
-          <a className="btn btn-small" href={profile.cv} download>CV <Icon name="download" size={16} /></a>
+          <a className="btn btn-small" href="#contact" onClick={close}>Contact me</a>
           <button className="icon-btn menu-btn" onClick={() => setOpen(!open)} aria-label="Menu" aria-expanded={open}>
             <Icon name={open ? "close" : "menu"} />
           </button>
@@ -109,55 +145,58 @@ function Nav({ theme, toggleTheme }) {
   );
 }
 
-function Section({ id, eyebrow, title, intro, children, tint }) {
-  return (
-    <section id={id} className={tint ? "section tint" : "section"}>
-      <div className="container">
-        <div className="section-head reveal">
-          <p className="eyebrow">{eyebrow}</p>
-          <h2>{title}</h2>
-          {intro && <p className="lead">{intro}</p>}
-        </div>
-        {children}
-      </div>
-    </section>
-  );
-}
-
 /* ---------------------------------------------------------------- sections */
 function Hero() {
+  const expert = certifications.filter((c) => c.level === "Expert");
   return (
     <section className="hero" id="top">
-      <div className="hero-glow" aria-hidden="true" />
       <div className="container hero-grid">
         <div className="hero-text">
-          <p className="hello"><span className="dot" /> Open to new opportunities</p>
-          <h1>Hi, I'm {profile.name.split(" ")[0]}.<br /><span className="grad">{profile.role}</span></h1>
-          <p className="headline">{profile.headline.join("  ·  ")}</p>
+          <p className="status"><span className="dot" aria-hidden="true" /> Open to new opportunities · {profile.location}</p>
+          <h1>{profile.name}</h1>
+          <p className="role">{profile.role} <span className="sep" aria-hidden="true">/</span> <span className="accent">Azure Solutions Architect Expert</span></p>
           <p className="intro">{profile.intro}</p>
           <div className="hero-cta">
-            <a className="btn" href="#projects">See my projects</a>
+            <a className="btn" href="#contact">Let's talk <Icon name="arrow" size={16} /></a>
             <a className="btn btn-ghost" href={profile.cv} download><Icon name="download" size={16} /> Download CV</a>
           </div>
-          <div className="socials">
+          <ul className="socials" aria-label="Profiles">
             {profile.social.map((s) => (
-              <a key={s.name} href={s.url} target={s.icon === "mail" ? undefined : "_blank"} rel="noreferrer" aria-label={s.name} title={s.name}>
-                <Icon name={s.icon} size={20} />
-              </a>
+              <li key={s.name}>
+                <a href={s.url} target={s.icon === "mail" ? undefined : "_blank"} rel="noreferrer" aria-label={s.name} title={s.name}>
+                  <Icon name={s.icon} size={19} />
+                </a>
+              </li>
             ))}
-            <span className="loc"><Icon name="pin" size={16} /> {profile.location}</span>
-          </div>
+          </ul>
         </div>
         <div className="hero-photo">
-          <img src={profile.photo} alt="Vishal Singh" width="360" height="360" />
-          <div className="badge badge-1"><Icon name="cloud" size={16} /> Azure Solutions Architect Expert</div>
-          <div className="badge badge-2"><Icon name="spark" size={16} /> Agentic AI</div>
+          <img src={profile.photo} alt="Portrait of Vishal Singh" width="360" height="360" fetchpriority="high" />
+          <a className="hero-cert" href="#certifications">
+            <img src={expert[0].badge} alt="" width="52" height="52" />
+            <span><strong>Microsoft Certified</strong>{expert.length}× Expert · {certifications.length - 1} Microsoft certifications</span>
+          </a>
         </div>
       </div>
-      <div className="container stats">
-        {profile.stats.map((s) => (
-          <div className="stat" key={s.label}><strong>{s.value}</strong><span>{s.label}</span></div>
-        ))}
+
+      <div className="container">
+        <div className="trust reveal">
+          <p className="trust-label">Experience at</p>
+          <ul className="trust-logos">
+            {experience.map((j) => (
+              <li key={j.company}>
+                <a href={j.url} target="_blank" rel="noreferrer" title={j.company}>
+                  <Logo src={j.logo} alt="" size={36} /><span>{j.company.replace(" (C-DAC)", "").replace("Centre for Development of Advanced Computing", "C-DAC")}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <dl className="stats">
+          {profile.stats.map((s) => (
+            <div className="stat reveal" key={s.label}><dt>{s.label}</dt><dd>{s.value}</dd></div>
+          ))}
+        </dl>
       </div>
     </section>
   );
@@ -165,56 +204,57 @@ function Hero() {
 
 function About() {
   return (
-    <Section id="about" eyebrow="About me" title="Cloud, security and AI, explained simply">
-      <div className="about-grid">
-        <div className="reveal">{profile.about.map((p) => <p className="body" key={p.slice(0, 20)}>{p}</p>)}</div>
+    <section className="section about" aria-label="About me">
+      <div className="container about-grid">
+        <div className="reveal">
+          <p className="eyebrow">About me</p>
+          {profile.about.map((p) => <p className="body" key={p.slice(0, 20)}>{p}</p>)}
+        </div>
         <div className="card reveal highlights">
-          <h3>What I bring</h3>
+          <h3>What I bring to your team</h3>
           <ul className="checks">
-            <li>Cloud platforms on <b>Azure & Kubernetes</b>, from design to production</li>
+            <li>Cloud platforms on <b>Azure &amp; Kubernetes</b>, from design to production</li>
             <li><b>CI/CD, GitOps</b> and infrastructure as code (Terraform)</li>
-            <li><b>Security & GDPR</b> built in from day one</li>
+            <li><b>Security &amp; GDPR</b> built in from day one</li>
             <li><b>AI agents, RAG and MCP</b>, and safe AI adoption for teams</li>
             <li><b>Team leadership</b>: mentoring, reviews, stakeholder demos</li>
           </ul>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }
 
 function Experience() {
-  const [openRole, setOpenRole] = useState(0);
+  const [openRole, setOpenRole] = useState(-1);
   return (
     <Section id="experience" eyebrow="Experience" title="Where I've worked" tint
-      intro="7+ years across product companies and client projects: insurance, finance, market research and device management.">
-      <ol className="timeline">
+      intro="7+ years across product companies and client projects: device management, insurance, finance and market research.">
+      <ol className="jobs">
         {experience.map((job, i) => {
           const expanded = openRole === i;
           const shown = expanded ? job.points : job.points.slice(0, 3);
           return (
-            <li className="tl-item reveal" key={job.company}>
-              <div className="tl-dot" />
-              <div className="card tl-card">
-                <div className="tl-top">
-                  <div>
-                    <h3>{job.role}</h3>
-                    <p className="muted">{job.company} · {job.place}</p>
-                  </div>
-                  <div className="tl-right">
-                    <span className="period">{job.period}</span>
-                    {job.award && <span className="award"><Icon name="award" size={14} /> {job.award}</span>}
-                  </div>
+            <li className="card job reveal" key={job.company}>
+              <div className="job-head">
+                <Logo src={job.logo} alt={`${job.company} logo`} size={56} />
+                <div className="job-title">
+                  <h3>{job.role}</h3>
+                  <p><a href={job.url} target="_blank" rel="noreferrer">{job.company}</a> · {job.place}</p>
                 </div>
-                {job.context && <p className="context">{job.context}</p>}
-                <ul className="bullets">{shown.map((p) => <li key={p}>{p}</li>)}</ul>
-                {job.points.length > 3 && (
-                  <button className="link-btn" onClick={() => setOpenRole(expanded ? -1 : i)}>
-                    {expanded ? "Show less" : `Show all ${job.points.length} highlights`}
-                  </button>
-                )}
-                <div className="chips">{job.stack.map((s) => <span className="chip" key={s}>{s}</span>)}</div>
+                <div className="job-meta">
+                  <span className={job.current ? "period now" : "period"}>{job.current && <i aria-hidden="true" />}{job.period}</span>
+                  {job.award && <span className="award"><Icon name="award" size={14} /> {job.award}</span>}
+                </div>
               </div>
+              {job.context && <p className="context">{job.context}</p>}
+              <ul className="bullets">{shown.map((p) => <li key={p}>{p}</li>)}</ul>
+              {job.points.length > 3 && (
+                <button className="link-btn" onClick={() => setOpenRole(expanded ? -1 : i)} aria-expanded={expanded}>
+                  {expanded ? "Show less" : `Show all ${job.points.length} highlights`}
+                </button>
+              )}
+              <Chips items={job.stack} />
             </li>
           );
         })}
@@ -223,29 +263,49 @@ function Experience() {
   );
 }
 
-const LANG_COLORS = { "C#": "#178600", TypeScript: "#3178c6", JavaScript: "#e6c200", Python: "#3572A5", HTML: "#e34c26", PowerShell: "#012456" };
+const LANG_COLORS = { "C#": "#178600", TypeScript: "#3178c6", JavaScript: "#e6c200", Python: "#3572A5", HTML: "#e34c26", PowerShell: "#012456", Shell: "#89e051" };
 const CATS = ["All", "Courses", "Azure", ".NET", "Frontend", "Full stack", "Python", "AI", "Security", "DevOps", "Data"];
 
 function Projects() {
   const [cat, setCat] = useState("All");
   const [q, setQ] = useState("");
   const [all, setAll] = useState(false);
+  const featured = workProjects.filter((p) => p.featured);
+  const more = workProjects.filter((p) => !p.featured);
   const filtered = useMemo(() => repos.filter((r) =>
     (cat === "All" || r.cats.includes(cat)) &&
     (q === "" || `${r.name} ${r.text} ${r.lang}`.toLowerCase().includes(q.toLowerCase()))), [cat, q]);
-  const visible = all || q || cat !== "All" ? filtered : filtered.slice(0, 9);
+  const visible = all || q || cat !== "All" ? filtered : filtered.slice(0, 6);
   return (
-    <Section id="projects" eyebrow="Projects" title="What I've built"
-      intro="Client and company projects (private code), plus everything I've published on GitHub.">
-      <h3 className="sub reveal">Professional projects</h3>
+    <Section id="projects" eyebrow="Projects" title="Selected work"
+      intro="The problem, what I did and what changed. Client code is private, so these are told as short case studies.">
+      <div className="cases">
+        {featured.map((p) => (
+          <article className="card case reveal" key={p.title}>
+            <div className="case-head">
+              <Logo src={p.logo} alt="" size={44} />
+              <div><h3>{p.title}</h3><p className="muted small">{p.org}</p></div>
+            </div>
+            <dl className="story">
+              <div><dt>Challenge</dt><dd>{p.story.challenge}</dd></div>
+              <div><dt>What I did</dt><dd>{p.story.approach}</dd></div>
+              <div><dt>Result</dt><dd>{p.story.result}</dd></div>
+            </dl>
+            <Chips items={p.tags} />
+          </article>
+        ))}
+      </div>
+
+      <h3 className="sub reveal">More professional projects</h3>
       <div className="grid-3">
-        {workProjects.map((p) => (
+        {more.map((p) => (
           <article className="card project reveal" key={p.title}>
-            <div className="project-icon"><Icon name={p.icon} size={22} /></div>
-            <h4>{p.title}</h4>
-            <p className="muted small">{p.org}</p>
+            <div className="case-head">
+              <Logo src={p.logo} alt="" size={40} />
+              <div><h4>{p.title}</h4><p className="muted small">{p.org}</p></div>
+            </div>
             <p className="body-sm">{p.text}</p>
-            <div className="chips">{p.tags.map((t) => <span className="chip" key={t}>{t}</span>)}</div>
+            <Chips items={p.tags} />
             {p.url && <a className="card-link" href={p.url} target="_blank" rel="noreferrer">Learn more <Icon name="external" size={14} /></a>}
           </article>
         ))}
@@ -255,12 +315,12 @@ function Projects() {
         <h3 className="sub">Open source on GitHub <span className="count">{repos.length}</span></h3>
         <label className="search">
           <Icon name="search" size={16} />
-          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search projects…" aria-label="Search projects" />
+          <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search repositories" aria-label="Search repositories" />
         </label>
       </div>
-      <div className="filters reveal" role="tablist" aria-label="Filter projects">
+      <div className="filters" role="group" aria-label="Filter repositories by topic">
         {CATS.map((c) => (
-          <button key={c} role="tab" aria-selected={cat === c} className={cat === c ? "filter on" : "filter"} onClick={() => setCat(c)}>{c}</button>
+          <button key={c} aria-pressed={cat === c} className={cat === c ? "filter on" : "filter"} onClick={() => setCat(c)}>{c}</button>
         ))}
       </div>
       <div className="grid-3">
@@ -276,31 +336,56 @@ function Projects() {
           </a>
         ))}
       </div>
-      {visible.length === 0 && <p className="muted center">No project matches "{q}".</p>}
-      {!all && !q && cat === "All" && filtered.length > 9 && (
-        <div className="center"><button className="btn btn-ghost" onClick={() => setAll(true)}>Show all {filtered.length} projects</button></div>
+      {visible.length === 0 && <p className="muted center">No repository matches "{q}".</p>}
+      {!all && !q && cat === "All" && filtered.length > 6 && (
+        <div className="center"><button className="btn btn-ghost" onClick={() => setAll(true)}>Show all {filtered.length} repositories</button></div>
       )}
+    </Section>
+  );
+}
+
+function Certifications() {
+  const ms = certifications.filter((c) => c.issuer === "Microsoft");
+  const other = certifications.filter((c) => c.issuer !== "Microsoft");
+  return (
+    <Section id="certifications" eyebrow="Certifications" title="Microsoft Certified" tint
+      intro={`${ms.length} official Microsoft certifications, including ${ms.filter((c) => c.level === "Expert").length} at Expert level. Each card links to the official certification page on Microsoft Learn.`}>
+      <div className="cert-grid">
+        {ms.map((c) => (
+          <a className={c.level === "Expert" ? "card cert expert reveal" : "card cert reveal"} key={c.name} href={c.url} target="_blank" rel="noreferrer">
+            <img className="cert-badge" src={c.badge} alt={`Microsoft Certified ${c.level} badge`} width="96" height="96" loading="lazy" />
+            <div className="cert-body">
+              <p className="cert-issuer">Microsoft Certified</p>
+              <h3>{c.name}</h3>
+              <div className="cert-tags"><span className={`lvl lvl-${c.level.toLowerCase()}`}>{c.level}</span><span className="exam">Exam {c.exam}</span></div>
+              <span className="card-link">View on Microsoft Learn <Icon name="external" size={14} /></span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div className="cert-foot reveal">
+        {other.map((c) => (
+          <a className="cert-mini" key={c.name} href={c.url} target="_blank" rel="noreferrer">
+            <img src={c.badge} alt="" width="32" height="32" loading="lazy" />
+            <span><strong>{c.name}</strong> · {c.issuer}</span>
+          </a>
+        ))}
+        {transcript && (
+          <a className="btn" href={transcript} target="_blank" rel="noreferrer"><Icon name="verified" size={16} /> Verify on Microsoft Learn</a>
+        )}
+      </div>
     </Section>
   );
 }
 
 function Skills() {
   return (
-    <Section id="skills" eyebrow="Skills" title="Tools I use every day" tint>
+    <Section id="skills" eyebrow="Skills" title="Tools I use every day">
       <div className="grid-4">
         {skills.map((g) => (
           <div className="card skill reveal" key={g.title}>
-            <h4>{g.title}</h4>
-            <div className="chips">{g.items.map((s) => <span className="chip" key={s}>{s}</span>)}</div>
-          </div>
-        ))}
-      </div>
-      <h3 className="sub reveal" style={{ marginTop: 48 }}>Certifications</h3>
-      <div className="certs">
-        {certifications.map((c) => (
-          <div className="cert reveal" key={c.name}>
-            <span className={c.issuer === "Microsoft" ? "cert-logo ms" : "cert-logo"}>{c.issuer === "Microsoft" ? "MS" : "SA"}</span>
-            <div><strong>{c.name}</strong><span>{c.issuer}</span></div>
+            <h3>{g.title}</h3>
+            <Chips items={g.items} />
           </div>
         ))}
       </div>
@@ -310,39 +395,37 @@ function Skills() {
 
 function Education() {
   return (
-    <Section id="education" eyebrow="Education" title="What I studied">
+    <Section id="education" eyebrow="Education" title="What I studied" tint>
       <div className="grid-3">
         {education.map((e) => (
-          <div className="card edu reveal" key={e.degree}>
-            <div className="project-icon"><Icon name="school" size={22} /></div>
+          <article className="card edu reveal" key={e.degree}>
+            <Logo src={e.logo} alt={`${e.school.split(",")[0]} logo`} size={64} />
             <span className="period">{e.period}</span>
-            <h4>{e.degree}</h4>
-            <p className="muted small">{e.school}</p>
+            <h3>{e.degree}</h3>
+            <p className="muted small"><a href={e.url} target="_blank" rel="noreferrer">{e.school}</a></p>
             <p className="body-sm">{e.note}</p>
-          </div>
+          </article>
         ))}
       </div>
-    </Section>
-  );
-}
-
-function Thesis() {
-  return (
-    <Section id="thesis" eyebrow="Master's thesis" title={thesis.title} tint>
-      <div className="thesis card reveal">
-        <div className="thesis-meta">
-          <span className="chip strong"><Icon name="book" size={14} /> {thesis.degree}</span>
-          <span className="chip">{thesis.date}</span>
-          <span className="chip">Supervisor: {thesis.supervisor}</span>
-          <span className="chip">ISO 31000:2018</span>
+      <article className="thesis card reveal" aria-labelledby="thesis-title">
+        <div className="thesis-top">
+          <Logo src={education[0].logo} alt="" size={44} />
+          <div>
+            <p className="eyebrow">Master's thesis</p>
+            <h3 id="thesis-title">{thesis.title}</h3>
+          </div>
         </div>
+        <ul className="thesis-meta chips">
+          <li className="chip strong"><Icon name="book" size={14} /> {thesis.degree}</li>
+          <li className="chip">{thesis.date}</li>
+          <li className="chip">Supervisor: {thesis.supervisor}</li>
+          <li className="chip">ISO 31000:2018</li>
+        </ul>
         <p className="body">{thesis.summary}</p>
-        <div className="grid-3 thesis-points">
-          {thesis.points.map((p) => (
-            <div key={p.k}><p className="eyebrow">{p.k}</p><p className="body-sm">{p.v}</p></div>
-          ))}
-        </div>
-      </div>
+        <dl className="story three">
+          {thesis.points.map((p) => (<div key={p.k}><dt>{p.k}</dt><dd>{p.v}</dd></div>))}
+        </dl>
+      </article>
     </Section>
   );
 }
@@ -350,21 +433,21 @@ function Thesis() {
 function Teaching() {
   return (
     <Section id="teaching" eyebrow="Teaching & community" title="I share what I learn"
-      intro="Free, hands-on courses with slides, runnable code, exercises and interview questions, on GitHub and on my YouTube channel.">
+      intro="Free, hands-on courses with slides, exercises and interview questions, on GitHub and on my YouTube channel CodeMitVishal.">
       <div className="grid-3">
         {courses.map((c) => (
           <a className="card course reveal" key={c.title} href={c.url} target="_blank" rel="noreferrer">
             <div className="project-icon"><Icon name="play" size={20} /></div>
-            <h4>{c.title}</h4>
+            <h3>{c.title}</h3>
             <p className="body-sm">{c.text}</p>
-            <div className="chips">{c.tags.map((t) => <span className="chip" key={t}>{t}</span>)}</div>
+            <Chips items={c.tags} />
             <span className="card-link">Open the course <Icon name="external" size={14} /></span>
           </a>
         ))}
       </div>
-      <div className="grid-2" style={{ marginTop: 28 }}>
+      <div className="grid-2 teach-bottom">
         <div className="card reveal">
-          <h4>Leadership & volunteering</h4>
+          <h3>Leadership &amp; volunteering</h3>
           <ul className="lead-list">
             {leadership.map((l) => (
               <li key={l.title}><div><strong>{l.title}</strong><p className="body-sm">{l.text}</p></div><span className="period">{l.period}</span></li>
@@ -372,12 +455,12 @@ function Teaching() {
           </ul>
         </div>
         <div className="card reveal">
-          <h4>What colleagues say</h4>
+          <h3>What colleagues say</h3>
           {testimonials.map((t) => (
-            <blockquote key={t.who}>
-              <p>“{t.text}”</p>
-              <footer><strong>{t.who}</strong> · {t.role}</footer>
-            </blockquote>
+            <figure className="quote" key={t.who}>
+              <blockquote><p>“{t.text}”</p></blockquote>
+              <figcaption><strong>{t.who}</strong> · {t.role}</figcaption>
+            </figure>
           ))}
         </div>
       </div>
@@ -386,18 +469,28 @@ function Teaching() {
 }
 
 function Contact() {
+  const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    try { await navigator.clipboard.writeText(profile.email); setCopied(true); setTimeout(() => setCopied(false), 2000); } catch (e) { /* no clipboard */ }
+  };
   return (
-    <section id="contact" className="section contact">
+    <section id="contact" className="section contact" aria-labelledby="contact-title">
       <div className="container">
         <div className="contact-card reveal">
           <p className="eyebrow light">Contact</p>
-          <h2>Let's build something together</h2>
-          <p className="lead light">Cloud platforms, DevSecOps, AI agents or a team that needs a lead: write me an email, I reply within a day or two.</p>
+          <h2 id="contact-title">Let's build something together</h2>
+          <p className="lead light">Cloud platforms, DevSecOps, AI agents, or a team that needs a lead. Email is the fastest way to reach me; I reply within one or two working days.</p>
+          <div className="email-row">
+            <a className="email" href={`mailto:${profile.email}`}><Icon name="mail" size={18} /> {profile.email}</a>
+            <button className="copy" onClick={copy} aria-live="polite">
+              <Icon name={copied ? "check" : "copy"} size={16} /> {copied ? "Copied" : "Copy"}
+            </button>
+          </div>
           <div className="hero-cta center-row">
-            <a className="btn btn-light" href={`mailto:${profile.email}`}><Icon name="mail" size={16} /> {profile.email}</a>
-            <a className="btn btn-outline-light" href={profile.social[0].url} target="_blank" rel="noreferrer"><Icon name="linkedin" size={16} /> LinkedIn</a>
+            <a className="btn btn-light" href={profile.social[0].url} target="_blank" rel="noreferrer"><Icon name="linkedin" size={16} /> LinkedIn</a>
             <a className="btn btn-outline-light" href={profile.cv} download><Icon name="download" size={16} /> CV (PDF)</a>
           </div>
+          <p className="where"><Icon name="pin" size={15} /> {profile.location} · CET (UTC+1)</p>
         </div>
       </div>
     </section>
@@ -408,12 +501,12 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="container footer-inner">
-        <p>© {new Date().getFullYear()} Vishal Singh · {profile.location}</p>
-        <div className="socials">
+        <p>© {new Date().getFullYear()} Vishal Singh · Built with React and Vite</p>
+        <ul className="socials" aria-label="Profiles">
           {profile.social.map((s) => (
-            <a key={s.name} href={s.url} target={s.icon === "mail" ? undefined : "_blank"} rel="noreferrer" aria-label={s.name}><Icon name={s.icon} size={18} /></a>
+            <li key={s.name}><a href={s.url} target={s.icon === "mail" ? undefined : "_blank"} rel="noreferrer" aria-label={s.name}><Icon name={s.icon} size={18} /></a></li>
           ))}
-        </div>
+        </ul>
       </div>
     </footer>
   );
@@ -424,16 +517,16 @@ export default function App() {
   useReveal();
   return (
     <>
-      <a className="skip" href="#about">Skip to content</a>
+      <a className="skip" href="#main">Skip to content</a>
       <Nav theme={theme} toggleTheme={toggleTheme} />
-      <main>
+      <main id="main">
         <Hero />
         <About />
         <Experience />
         <Projects />
+        <Certifications />
         <Skills />
         <Education />
-        <Thesis />
         <Teaching />
         <Contact />
       </main>

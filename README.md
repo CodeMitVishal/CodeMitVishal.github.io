@@ -1,12 +1,13 @@
-# Vishal Singh · Portfolio
+# Cloudfolio · Vishal Singh
 
-**Live:** https://codemitvishal.github.io/ (also at https://codemitvishal.github.io/VishalPortfolio-React/)
+**Live:** https://codemitvishal.github.io/ (also at https://codemitvishal.github.io/cloudfolio/)
 
 Personal portfolio of Vishal Singh, Cloud Engineer (Azure & Kubernetes · DevSecOps · Agentic AI): experience, professional and open-source projects, skills and certifications, education, master's thesis, free courses, and contact.
 
 ## Tech
 
 - React 18 + Vite, plain CSS with light and dark themes
+- Designed for recruiters: who, what and how to contact within 5 seconds; case studies (challenge, what I did, result); official Microsoft certification badges linked to Microsoft Learn; company and university logos
 - Responsive, accessible (keyboard focus, reduced motion), SEO and Open Graph tags
 - All content lives in [`src/data.js`](src/data.js): edit it to update the site
 
@@ -27,4 +28,4 @@ npm run deploy:root
 npm run deploy
 ```
 
-The first publishes to https://codemitvishal.github.io/ (the `main` branch of `CodeMitVishal.github.io`). The second publishes to `/VishalPortfolio-React/` (this repo's `gh-pages` branch). Run both after editing `src/data.js`.
+The first publishes to https://codemitvishal.github.io/ (the `main` branch of `CodeMitVishal.github.io`). The second publishes to `/cloudfolio/` (this repo's `gh-pages` branch). Run both after editing `src/data.js`.
