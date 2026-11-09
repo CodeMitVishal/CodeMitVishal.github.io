@@ -1,39 +1,24 @@
 {
-  "name": "VishalPortfolio-React",
-  "version": "1.0.0",
+  "name": "vishal-portfolio",
+  "version": "2.0.0",
   "private": true,
-  "description": "Single page resume using React",
-  "author": {
-    "name": "Vishal Singh",
-    "email": "vishal8840906676@gmail.com"
-  },
-  "keywords": [
-    "React",
-    "single-page",
-    "scroll",
-    "contactForm"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://vishalcodingninja.github.io/VishalPortfolio-React"
-  },
-  "homepage": "https://vishalcodingninja.github.io/VishalPortfolio-React",
-  "license": "ISC",
-  "devDependencies": {
-    "gh-pages": "^0.12.0",
-    "react-scripts": "0.7.0"
+  "description": "Portfolio of Vishal Singh: Cloud Engineer (Azure & Kubernetes, DevSecOps, Agentic AI)",
+  "author": "Vishal Singh",
+  "homepage": "https://codemitvishal.github.io/VishalPortfolio-React/",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
-    "jquery": "^3.1.1",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "gh-pages": "^6.3.0",
+    "vite": "^6.0.7"
   }
 }
