@@ -35,7 +35,7 @@ function useTheme() {
 
 const NAV = [
   ["experience", "Experience"], ["work", "Work"], ["credentials", "Credentials"],
-  ["toolbox", "Toolbox"], ["education", "Education"], ["contact", "Contact"],
+  ["toolbox", "Toolbox"], ["education", "Education"], ["teaching", "Teaching"], ["contact", "Contact"],
 ];
 
 function useActiveSection() {
@@ -87,14 +87,34 @@ function Masthead({ theme, toggleTheme }) {
   const [open, setOpen] = useState(false);
   const active = useActiveSection();
   const close = () => setOpen(false);
-  useEffect(() => { document.body.style.overflow = open ? "hidden" : ""; }, [open]);
+  // Close the menu first (unlocking the page), then scroll to the section.
+  const goTo = (e, id) => {
+    e.preventDefault();
+    setOpen(false);
+    document.body.style.overflow = "";
+    const smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: smooth ? "smooth" : "auto" });
+      history.replaceState(null, "", `#${id}`);
+    }, 0);
+  };
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return undefined;
+    const onKey = (e) => { if (e.key === "Escape") setOpen(false); };
+    const wide = window.matchMedia("(min-width: 961px)");
+    const onWide = () => { if (wide.matches) setOpen(false); };
+    window.addEventListener("keydown", onKey);
+    wide.addEventListener("change", onWide);
+    return () => { window.removeEventListener("keydown", onKey); wide.removeEventListener("change", onWide); };
+  }, [open]);
   return (
-    <header className="mast">
+    <header className={open ? "mast open" : "mast"}>
       <div className="wrap mast-inner">
         <a href="#top" className="sig" onClick={close}>Vishal Singh</a>
-        <nav className={open ? "menu open" : "menu"} aria-label="Sections">
+        <nav id="site-menu" className={open ? "menu open" : "menu"} aria-label="Sections">
           {NAV.map(([id, label], i) => (
-            <a key={id} href={`#${id}`} onClick={close} className={active === id ? "on" : ""} aria-current={active === id ? "true" : undefined}>
+            <a key={id} href={`#${id}`} onClick={(e) => goTo(e, id)} className={active === id ? "on" : ""} aria-current={active === id ? "true" : undefined}>
               <span aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>{label}
             </a>
           ))}
@@ -103,7 +123,7 @@ function Masthead({ theme, toggleTheme }) {
           <button className="tool" onClick={toggleTheme} aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}>
             <Icon name={theme === "dark" ? "sun" : "moon"} size={17} />
           </button>
-          <button className="tool menu-btn" onClick={() => setOpen(!open)} aria-label="Menu" aria-expanded={open}>
+          <button className="tool menu-btn" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="site-menu">
             <Icon name={open ? "close" : "menu"} size={19} />
           </button>
         </div>

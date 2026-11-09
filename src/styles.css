@@ -257,9 +257,13 @@ h1, h2, h3 { color: var(--ink); font-weight: 400; }
 @media (max-width: 960px) {
   :root { --gutter: 40px; }
   .menu-btn { display: grid; }
-  .menu { position: fixed; inset: 64px 0 0; z-index: 39; display: none; flex-direction: column; gap: 0; padding: 18px 20px; background: var(--paper); }
+  /* The blur on .mast would trap the fixed menu inside the 64px bar, so drop it while the menu is open. */
+  .mast.open { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--paper); }
+  .menu { position: fixed; top: 65px; left: 0; right: 0; height: calc(100dvh - 65px); z-index: 39; display: none; flex-direction: column; gap: 0;
+    padding: 12px 20px 32px; background: var(--paper); overflow-y: auto; overscroll-behavior: contain; }
   .menu.open { display: flex; }
-  .menu a { font: 400 38px/1.15 var(--serif); color: var(--ink); padding: 12px 0; border-bottom: 1px solid var(--rule); gap: 14px; }
+  .menu a { flex: none; font: 400 34px/1.15 var(--serif); color: var(--ink); padding: 12px 0; border-bottom: 1px solid var(--rule); gap: 14px; }
+  .menu a.on { border-bottom-color: var(--rule); color: var(--accent); }
   .menu a span { font: 400 13px/1 var(--mono); }
   .hero { padding-top: 56px; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
