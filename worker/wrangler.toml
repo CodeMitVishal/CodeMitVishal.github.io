@@ -1,0 +1,22 @@
+# Cloudflare Worker that answers questions about the portfolio.
+# Deploy:  npm run assistant:deploy   (after a one-time `npx wrangler login`)
+name = "vishal-portfolio-assistant"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# Workers AI through a binding: no API key exists anywhere, so there is nothing secret to leak.
+[ai]
+binding = "AI"
+
+# Per-visitor rate limit (requests per IP address per minute).
+[[ratelimits]]
+name = "RATE_LIMITER"
+namespace_id = "1001"
+
+  [ratelimits.simple]
+  limit = 8
+  period = 60
+
+[vars]
+ALLOWED_ORIGINS = "https://codemitvishal.github.io,https://codemitvishal-github-io.translate.goog,http://localhost:5173,http://localhost:4173"
+MODEL = "@cf/google/gemma-4-26b-a4b-it"

@@ -3,7 +3,9 @@ import {
   profile, experience, workProjects, courses, repos, skills,
   certifications, transcript, education, thesis, testimonials, leadership, languages,
 } from "./data.js";
-import { LANGS, LangProvider, rich, useLang } from "./i18n.jsx";
+import { LangProvider, useLang } from "./i18n.jsx";
+import LanguagePicker from "./LanguagePicker.jsx";
+import Assistant from "./Assistant.jsx";
 
 /* A small, hand-tuned icon set. Everything else is typography. */
 const PATHS = {
@@ -94,19 +96,6 @@ function Flow({ lanes, caption }) {
   );
 }
 
-function LangSwitch() {
-  const { lang, setLang, t } = useLang();
-  return (
-    <div className="langs" role="group" aria-label={t("Language")}>
-      {LANGS.map((l) => (
-        <button key={l.code} lang={l.code} aria-pressed={lang === l.code} title={l.name} aria-label={l.name} onClick={() => setLang(l.code)}>
-          {l.short}
-        </button>
-      ))}
-    </div>
-  );
-}
-
 const slashes = (items) => items.join(" / ");
 
 /* ---------------------------------------------------------------- page */
@@ -148,7 +137,7 @@ function Masthead({ theme, toggleTheme }) {
           ))}
         </nav>
         <div className="mast-tools">
-          <LangSwitch />
+          <LanguagePicker />
           <button className="tool" onClick={toggleTheme} aria-label={theme === "dark" ? t("Switch to light theme") : t("Switch to dark theme")}>
             <Icon name={theme === "dark" ? "sun" : "moon"} size={17} />
           </button>
@@ -162,7 +151,7 @@ function Masthead({ theme, toggleTheme }) {
 }
 
 function Hero() {
-  const { lang, t } = useLang();
+  const { t, tr } = useLang();
   const now = experience[0];
   const ms = certifications.filter((c) => c.issuer === "Microsoft");
   const expert = ms.filter((c) => c.level === "Expert");
@@ -171,7 +160,7 @@ function Hero() {
       <div className="wrap hero-grid">
         <div className="hero-copy">
           <p className="kicker">{t("Vishal Singh")} — {t(profile.role)}, {t(profile.location)}</p>
-          <h1 id="hero-h">{rich(lang, "heroTitle")}</h1>
+          <h1 id="hero-h">{tr("I build C# back ends that *talk in events*, Angular front ends, and the pipelines that *ship them* to Azure.")}</h1>
           <p className="hero-sub">
             {t("Seven years of production code: REST APIs, event-driven systems with Service Bus and the Outbox pattern, data processors, AI agent back ends, and the CI/CD that keeps them honest.")}
           </p>
@@ -191,7 +180,7 @@ function Hero() {
         <dl className="facts">
           <div>
             <dt>{t("Now")}</dt>
-            <dd><img src={now.logo} alt="" width="22" height="22" /><span>{rich(lang, "nowAt")(t("Software Engineer, Cloud Products"), <a href={now.url} {...ext}>baramundi</a>)}</span></dd>
+            <dd><img src={now.logo} alt="" width="22" height="22" /><span>{tr("{role} at {company}", { role: t("Software Engineer, Cloud Products"), company: <a href={now.url} {...ext}>baramundi</a> })}</span></dd>
           </div>
           <div>
             <dt>{t("Before")}</dt>
@@ -202,11 +191,11 @@ function Hero() {
           </div>
           <div>
             <dt>{t("Certified")}</dt>
-            <dd><img src={expert[0].badge} alt="" width="26" height="26" /><span>{rich(lang, "certified")(<a href="#credentials">{ms.length}× Microsoft</a>, expert.length)}</span></dd>
+            <dd><img src={expert[0].badge} alt="" width="26" height="26" /><span>{tr("{count}, {experts} at Expert level", { count: <a href="#credentials">{ms.length}× Microsoft</a>, experts: expert.length })}</span></dd>
           </div>
           <div>
             <dt>{t("Teaching")}</dt>
-            <dd><span>{rich(lang, "courses")(<a href={profile.social[2].url} {...ext}>YouTube</a>)}</span></dd>
+            <dd><span>{tr("Free Git & Python courses on {youtube}", { youtube: <a href={profile.social[2].url} {...ext}>YouTube</a> })}</span></dd>
           </div>
         </dl>
       </div>
@@ -214,15 +203,23 @@ function Hero() {
   );
 }
 
+const BRINGS = [
+  "**C# / .NET REST APIs** and microservices, structured with Clean Architecture.",
+  "**Event-driven back ends**: IoT Hub consumer groups, Service Bus, the Outbox pattern, change trackers.",
+  "**Data processors and pipelines** that move millions of rows without dropping one.",
+  "**AI agent back ends**: tool APIs, MCP servers and RAG over company data.",
+  "**Angular** front ends, **CI/CD pipelines**, and careful **code reviews**.",
+];
+
 function About() {
-  const { lang, t } = useLang();
+  const { t, tr } = useLang();
   return (
     <Section id="about" num="00" title={t("About")} note={t("The short version.")}>
       <div className="prose">
         {profile.about.map((p) => <p key={p.slice(0, 24)}>{t(p)}</p>)}
       </div>
       <ol className="brings">
-        {rich(lang, "brings").map((item, i) => <li key={i}><span>{item}</span></li>)}
+        {BRINGS.map((item) => <li key={item}><span>{tr(item)}</span></li>)}
       </ol>
       <h3 className="minor">{t("Languages")}</h3>
       <dl className="spoken">
@@ -347,7 +344,7 @@ function Work() {
 }
 
 function Credentials() {
-  const { lang, t } = useLang();
+  const { t, tr } = useLang();
   const ms = certifications.filter((c) => c.issuer === "Microsoft");
   const other = certifications.filter((c) => c.issuer !== "Microsoft");
   return (
@@ -367,7 +364,7 @@ function Credentials() {
       </ul>
       <p className="also">
         {other.map((c) => (
-          <span key={c.name}>{rich(lang, "alsoCertified")(<a href={c.url} {...ext}>{c.name}</a>, c.issuer)}</span>
+          <span key={c.name}>{tr("Also certified: {cert}, {issuer}.", { cert: <a href={c.url} {...ext}>{c.name}</a>, issuer: c.issuer })}</span>
         ))}
         {transcript && <> <a className="textlink" href={transcript} {...ext}>{t("Verify my transcript on Microsoft Learn")} ↗</a></>}
       </p>
@@ -514,6 +511,7 @@ function Page() {
         <Contact />
       </main>
       <Colophon />
+      <Assistant />
     </>
   );
 }

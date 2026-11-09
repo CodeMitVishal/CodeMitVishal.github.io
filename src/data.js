@@ -1,5 +1,5 @@
 // All website content lives here. Edit this file to update the portfolio.
-const BASE = import.meta.env.BASE_URL;
+const BASE = import.meta.env?.BASE_URL ?? "/"; // "/" when read by Node scripts (knowledge builder)
 
 export const profile = {
   name: "Vishal Singh",
@@ -347,3 +347,8 @@ export const languages = [
   { name: "Hindi", level: "Fluent", note: "" },
   { name: "German", level: "A2 (elementary)", note: "Everyday conversations; improving step by step." },
 ];
+
+// AI assistant: URL of the Cloudflare Worker in worker/ (empty = the assistant uses on-page search only).
+export const assistant = {
+  endpoint: "",
+};

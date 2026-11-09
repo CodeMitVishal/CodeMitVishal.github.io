@@ -3,3 +3,8 @@ dist/
 .DS_Store
 *.log
 .claude/
+
+# Cloudflare Worker build output
+worker/.wrangler/
+worker/.out/
+.wrangler/
