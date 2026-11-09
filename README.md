@@ -1,6 +1,6 @@
 # Vishal Singh · Portfolio
 
-**Live:** https://codemitvishal.github.io/VishalPortfolio-React/
+**Live:** https://codemitvishal.github.io/ (also at https://codemitvishal.github.io/VishalPortfolio-React/)
 
 Personal portfolio of Vishal Singh, Cloud Engineer (Azure & Kubernetes · DevSecOps · Agentic AI): experience, professional and open-source projects, skills and certifications, education, master's thesis, free courses, and contact.
 
@@ -20,7 +20,11 @@ npm run dev
 ## Deploy to GitHub Pages
 
 ```bash
+npm run deploy:root
+```
+
+```bash
 npm run deploy
 ```
 
-This builds to `dist/` and publishes it to the `gh-pages` branch.
+The first publishes to https://codemitvishal.github.io/ (the `main` branch of `CodeMitVishal.github.io`). The second publishes to `/VishalPortfolio-React/` (this repo's `gh-pages` branch). Run both after editing `src/data.js`.

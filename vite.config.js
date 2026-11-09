@@ -1,8 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// The site is served from https://codemitvishal.github.io/VishalPortfolio-React/
+// Two addresses, one build setting:
+//   https://codemitvishal.github.io/                        (BASE=/  -> npm run deploy:root)
+//   https://codemitvishal.github.io/VishalPortfolio-React/  (default -> npm run deploy)
 export default defineConfig({
   plugins: [react()],
-  base: "/VishalPortfolio-React/",
+  base: process.env.BASE || "/VishalPortfolio-React/",
 });
