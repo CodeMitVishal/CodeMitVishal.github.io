@@ -340,3 +340,10 @@ export const leadership = [
   { title: "National Cadet Corps (NCC)", period: "2009 – 2013", text: "Senior Under Officer; led a platoon, awards for discipline." },
   { title: "National Service Scheme (NSS)", period: "2013 – 2017", text: "Social service volunteer: led community outreach teams and taught children in primary schools." },
 ];
+
+// Spoken languages (shown in About). Levels follow CEFR where it applies.
+export const languages = [
+  { name: "English", level: "Full professional proficiency", note: "My working language for code, documentation, meetings, reviews and teaching." },
+  { name: "Hindi", level: "Fluent", note: "" },
+  { name: "German", level: "A2 (elementary)", note: "Everyday conversations; improving step by step." },
+];

@@ -11,9 +11,9 @@
   --rule: #d6cfc1;
   --accent: #b23f0e;
   --dots: #d2cabb;
-  --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
-  --sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "Geist Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --serif: "Instrument Serif", "Noto Serif Devanagari", "Iowan Old Style", Georgia, serif;
+  --sans: "Geist", "Noto Sans Devanagari", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", "Noto Sans Devanagari", ui-monospace, "SFMono-Regular", Consolas, monospace;
   --gutter: 64px;
   color-scheme: light;
 }
@@ -64,6 +64,11 @@ h1, h2, h3 { color: var(--ink); font-weight: 400; }
 .tool { display: grid; place-items: center; width: 38px; height: 38px; color: var(--ink); border: 1px solid var(--rule); border-radius: 50%; }
 .tool:hover { border-color: var(--ink); }
 .menu-btn { display: none; }
+.langs { display: inline-flex; padding: 3px; border: 1px solid var(--rule); border-radius: 999px; margin-right: 4px; }
+.langs button { min-width: 32px; height: 30px; padding: 0 8px; border-radius: 999px; font: 500 12px/1 var(--mono); color: var(--muted); }
+.langs button[lang="hi"] { font-family: var(--sans); font-size: 13.5px; }
+.langs button:hover { color: var(--ink); }
+.langs button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 
 /* ------------------------------------------------------------ hero */
 .hero { padding: 96px 0 0; }
@@ -109,6 +114,14 @@ h1, h2, h3 { color: var(--ink); font-weight: 400; }
 .brings li { counter-increment: b; display: grid; grid-template-columns: 48px 1fr; padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: 16.5px; }
 .brings li::before { content: counter(b, decimal-leading-zero); font: 400 12.5px/2 var(--mono); color: var(--accent); }
 .brings b { color: var(--ink); font-weight: 600; }
+
+.spoken { max-width: 760px; border-top: 1px solid var(--ink); }
+.spoken div { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.spoken dt { font: 400 24px/1.2 var(--serif); color: var(--ink); }
+.spoken dd { display: grid; gap: 2px; font-size: 16px; }
+.spoken dd b { color: var(--ink); font-weight: 600; }
+.spoken dd span { color: var(--muted); font-size: 15px; }
+.quote-note { margin-top: 18px; font-size: 14px; }
 
 /* experience ledger */
 .ledger { border-top: 1px solid var(--ink); }
@@ -248,6 +261,18 @@ h1, h2, h3 { color: var(--ink); font-weight: 400; }
 .colophon-inner { display: flex; justify-content: space-between; gap: 12px 32px; flex-wrap: wrap; }
 .colophon a { color: var(--muted); }
 
+/* Devanagari needs taller lines and no negative tracking, or its marks clip and collide. */
+:root:lang(hi) h1, :root:lang(hi) h2, :root:lang(hi) h3, :root:lang(hi) .sig, :root:lang(hi) .menu a,
+:root:lang(hi) .badge-name, :root:lang(hi) .spoken dt, :root:lang(hi) .quotes blockquote p, :root:lang(hi) .prose p:first-child,
+:root:lang(hi) .role-context, :root:lang(hi) .flow figcaption { letter-spacing: 0; line-height: 1.4; }
+:root:lang(hi) .hero h1 { font-size: clamp(34px, 4.6vw, 64px); line-height: 1.3; }
+:root:lang(hi) .contact h2 { font-size: clamp(32px, 4.6vw, 64px); line-height: 1.3; }
+:root:lang(hi) body { line-height: 1.75; }
+:root:lang(hi) .kicker, :root:lang(hi) .eyebrow, :root:lang(hi) .facts dt, :root:lang(hi) .case-story dt, :root:lang(hi) .tools dt,
+:root:lang(hi) .case-notes dt, :root:lang(hi) .lane-name, :root:lang(hi) .stack span, :root:lang(hi) .honour { letter-spacing: 0; line-height: 1.5; }
+:root:lang(de) .hero h1 { font-size: clamp(42px, 5.4vw, 80px); }
+:root:lang(de) .sec-label h2 { hyphens: auto; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
@@ -328,6 +353,8 @@ h1, h2, h3 { color: var(--ink); font-weight: 400; }
   .schools li { grid-template-columns: 44px minmax(0, 1fr); }
   .schools img { width: 44px; height: 44px; }
   .schools .when { grid-column: 2; }
+  .spoken div { grid-template-columns: 1fr; gap: 4px; }
+  .langs button { min-width: 28px; padding: 0 6px; }
   .thesis { padding: 26px 20px; }
   .contact { padding: 96px 0; }
 }

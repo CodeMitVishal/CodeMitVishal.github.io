@@ -18,6 +18,10 @@ npm install
 npm run dev
 ```
 
+## Languages
+
+The site is in English by default, with German and Hindi via the **EN · DE · हि** switcher (or links like `?lang=de`). Translations live in [`src/i18n/de.js`](src/i18n/de.js) and [`src/i18n/hi.js`](src/i18n/hi.js), keyed by the English text; any text without a translation stays in English.
+
 ## Deploy
 
 ```bash
