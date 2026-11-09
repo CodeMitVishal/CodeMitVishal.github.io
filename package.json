@@ -1,5 +1,5 @@
 {
-  "name": "cloudfolio",
+  "name": "codemitvishal-portfolio",
   "version": "2.0.0",
   "private": true,
   "description": "Portfolio of Vishal Singh: Cloud Engineer (Azure & Kubernetes, DevSecOps, Agentic AI)",
@@ -9,8 +9,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "deploy": "vite build && gh-pages -d dist -b main -r https://github.com/CodeMitVishal/CodeMitVishal.github.io.git -m \"Deploy portfolio\""
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -18,7 +17,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
-    "gh-pages": "^6.3.0",
     "vite": "^6.0.7"
   }
 }

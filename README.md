@@ -1,4 +1,4 @@
-# Cloudfolio · Vishal Singh
+# Vishal Singh · Portfolio
 
 **Live:** https://codemitvishal.github.io/
 
@@ -18,10 +18,10 @@ npm install
 npm run dev
 ```
 
-## Deploy to GitHub Pages
+## Deploy
+
+Push to `main`. The [GitHub Actions workflow](.github/workflows/deploy.yml) builds the site and publishes it to https://codemitvishal.github.io/ in about a minute.
 
 ```bash
-npm run deploy
+git push
 ```
-
-This builds the site and publishes it to https://codemitvishal.github.io/ (the `main` branch of [`CodeMitVishal.github.io`](https://github.com/CodeMitVishal/CodeMitVishal.github.io), which only holds the built files). Run it after editing `src/data.js`. This repo's `gh-pages` branch only redirects the old `/cloudfolio/` address to the main site.

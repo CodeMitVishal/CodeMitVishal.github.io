@@ -426,7 +426,7 @@ function Colophon() {
     <footer className="colophon">
       <div className="wrap colophon-inner">
         <p>© {new Date().getFullYear()} Vishal Singh.</p>
-        <p>Set in Instrument Serif, Geist and Geist Mono. Built with React and Vite, hosted on GitHub Pages. <a href="https://github.com/CodeMitVishal/cloudfolio" {...ext}>Source ↗</a></p>
+        <p>Set in Instrument Serif, Geist and Geist Mono. Built with React and Vite, hosted on GitHub Pages. <a href="https://github.com/CodeMitVishal/CodeMitVishal.github.io" {...ext}>Source ↗</a></p>
       </div>
     </footer>
   );

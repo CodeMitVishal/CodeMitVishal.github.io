@@ -223,7 +223,7 @@ export const repos = [
   { name: "UniLingual", text: "One tool for all tongues: a multilingual translation tool.", lang: "—", year: 2025, cats: ["Full stack", "AI"] },
   { name: "UniLingual.Api", text: "The API behind UniLingual.", lang: "TypeScript", year: 2025, cats: ["Full stack", "AI"] },
   { name: "Insurance.API", text: "An insurance domain REST API in .NET.", lang: "C#", year: 2025, cats: [".NET"] },
-  { name: "cloudfolio", text: "This website: my portfolio, built with React and Vite.", lang: "JavaScript", year: 2026, cats: ["Frontend"] },
+  { name: "CodeMitVishal.github.io", text: "This website: my portfolio, built with React and Vite.", lang: "JavaScript", year: 2026, cats: ["Frontend"] },
   { name: "GangOfFour.DesignPatterns", text: "The classic Gang of Four design patterns implemented in C#.", lang: "C#", year: 2024, cats: [".NET"] },
   { name: "Blazor.App.POC", text: "Proof of concept of a Blazor web application.", lang: "HTML", year: 2024, cats: [".NET", "Frontend"] },
   { name: "Python.FastAPI", text: "REST endpoints built with Python FastAPI.", lang: "Python", year: 2024, cats: ["Python"] },
