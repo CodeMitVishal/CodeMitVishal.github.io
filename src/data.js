@@ -350,5 +350,5 @@ export const languages = [
 
 // AI assistant: URL of the Cloudflare Worker in worker/ (empty = the assistant uses on-page search only).
 export const assistant = {
-  endpoint: "",
+  endpoint: "https://vishal-portfolio-assistant.codemitvishal-portfolio.workers.dev",
 };

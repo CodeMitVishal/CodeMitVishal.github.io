@@ -96,19 +96,15 @@ sequenceDiagram
 - **No surprise bills.** The Workers Free plan includes 10,000 AI units per day (roughly 300 questions). When they run out, the AI simply stops until the next day and the chat falls back to on-page search.
 - The chat panel tells visitors that AI can make mistakes and not to share personal information.
 
-**Turn the AI on (one-time, free):**
-1. Create a free account at [dash.cloudflare.com](https://dash.cloudflare.com/sign-up).
-2. Log Wrangler in to that account. This opens your browser:
-   ```bash
-   npx wrangler@4 login
-   ```
-3. Deploy the Worker. The command prints its address, for example `https://vishal-portfolio-assistant.<you>.workers.dev`:
-   ```bash
-   npm run assistant:deploy
-   ```
-4. Put that address into `assistant.endpoint` in [`src/data.js`](src/data.js), then run `npm run deploy`.
+**Status:** live. The Worker runs at `https://vishal-portfolio-assistant.codemitvishal-portfolio.workers.dev` (set in `assistant.endpoint` in [`src/data.js`](src/data.js)). Typical cost: 8–40 free units per question, so the free 10,000 daily units cover several hundred questions.
 
-Until step 4 is done, the assistant runs in **search mode**: it answers by quoting the matching parts of the website, with no AI involved.
+**Update the assistant** after changing `data.js` (it reads the same content):
+
+```bash
+npm run assistant:deploy
+```
+
+Wrangler must be logged in to the Cloudflare account once (`npx wrangler@4 login`). To watch it live: `npx wrangler@4 tail vishal-portfolio-assistant`. If the endpoint is ever removed, the chat falls back to **search mode**, quoting the matching parts of the website.
 
 ## Design
 
