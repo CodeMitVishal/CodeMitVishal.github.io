@@ -67,14 +67,20 @@ function Section({ id, num, title, note, children }) {
 }
 
 /* A schematic of a real system: boxes, arrows, mono labels. */
-function Flow({ steps, caption }) {
+/* `lanes` is a list of { name, steps }; a single unnamed lane draws as one row of boxes. */
+function Flow({ lanes, caption }) {
   return (
     <figure className="flow">
-      <ol>
-        {steps.map(([name, detail], i) => (
-          <li key={name}><span className="flow-i">{String(i + 1).padStart(2, "0")}</span><b>{name}</b><span>{detail}</span></li>
-        ))}
-      </ol>
+      {lanes.map((lane) => (
+        <div className="lane" key={lane.name || "main"}>
+          {lane.name && <p className="lane-name">{lane.name}</p>}
+          <ol aria-label={lane.name || "Flow"}>
+            {lane.steps.map(([name, detail], i) => (
+              <li key={name}><span className="flow-i">{String(i + 1).padStart(2, "0")}</span><b>{name}</b><span>{detail}</span></li>
+            ))}
+          </ol>
+        </div>
+      ))}
       {caption && <figcaption>{caption}</figcaption>}
     </figure>
   );
@@ -195,7 +201,7 @@ function About() {
       </div>
       <ol className="brings">
         <li><span><b>C# / .NET REST APIs</b> and microservices, structured with Clean Architecture.</span></li>
-        <li><span><b>Event-driven back ends</b>: Service Bus, Event Hubs, the Outbox pattern, change trackers.</span></li>
+        <li><span><b>Event-driven back ends</b>: IoT Hub consumer groups, Service Bus, the Outbox pattern, change trackers.</span></li>
         <li><span><b>Data processors and pipelines</b> that move millions of rows without dropping one.</span></li>
         <li><span><b>AI agent back ends</b>: tool APIs, MCP servers and RAG over company data.</span></li>
         <li><span><b>Angular</b> front ends, <b>CI/CD pipelines</b>, and careful <b>code reviews</b>.</span></li>
@@ -254,12 +260,17 @@ function Work() {
               <p className="case-org"><img src={p.logo} alt="" width="18" height="18" />{p.org}</p>
             </div>
           </header>
-          <Flow steps={p.flow} caption={`Fig. ${i + 1}: ${p.title}, from end to end.`} />
+          <Flow lanes={p.flows || [{ steps: p.flow }]} caption={`Fig. ${i + 1}: ${p.title}, from end to end.`} />
           <dl className="case-story">
             <div><dt>Problem</dt><dd>{p.story.challenge}</dd></div>
             <div><dt>What I built</dt><dd>{p.story.approach}</dd></div>
             <div><dt>Outcome</dt><dd>{p.story.result}</dd></div>
           </dl>
+          {p.notes && (
+            <dl className="case-notes">
+              {p.notes.map((n) => <div key={n.k}><dt>{n.k}</dt><dd>{n.v}</dd></div>)}
+            </dl>
+          )}
           <p className="stack"><span>Stack</span> {slashes(p.tags)}</p>
         </article>
       ))}
