@@ -13,7 +13,7 @@
 import { buildKnowledge, searchKnowledge } from "../../src/knowledge.js";
 
 const KNOWLEDGE = buildKnowledge();
-const ALWAYS = KNOWLEDGE.filter((c) => c.id === "profile" || c.id === "contact");
+const ALWAYS = KNOWLEDGE.filter((c) => ["profile", "work-history", "contact"].includes(c.id));
 
 const LIMITS = { bodyBytes: 16000, messages: 10, perMessage: 800, total: 4000, reply: 4000 };
 
@@ -75,6 +75,7 @@ function systemPrompt(context, language) {
     "Rules:",
     "- Use ONLY the facts in the CONTEXT below. It is exactly what his website shows. Never add anything from your own general knowledge about Vishal, his employers, his clients or anything else, and never guess.",
     "- If the answer is not in the CONTEXT, say you don't know and suggest emailing him. Never invent employers, dates, numbers, salaries, locations or skills.",
+    "- His employers are exactly the companies in 'Work history (employers)'. Companies such as Samsung or Assurant are clients he built software for, not employers.",
     "- Refer to him as Vishal (he/him).",
     "- Be concise and friendly: at most about 120 words. Use short bullet points when listing several items.",
     `- The visitor's language is ${language}. Questions may be written in that language (including Indian languages such as Hindi, Bengali, Marathi, Telugu, Tamil or Gujarati): understand the question, find the answer in the English CONTEXT, and reply in ${language}.`,

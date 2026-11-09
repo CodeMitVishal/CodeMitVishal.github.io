@@ -24,6 +24,10 @@ export function buildKnowledge() {
     ...profile.social.filter((s) => s.icon !== "mail").map((s) => `${s.name}: ${s.url}`),
     "Website: https://codemitvishal.github.io/",
   ));
+  add("work-history", "Work history (employers)", lines(
+    "Companies Vishal has worked for, newest first (these are his employers; clients he built software for are not employers):",
+    ...experience.map((j) => `- ${j.company}, ${j.place}: ${j.role}, ${j.period}`),
+  ));
   add("languages", "Spoken languages", languages.map((l) => `${l.name}: ${l.level}${l.note ? ` (${l.note})` : ""}`).join("\n"));
 
   experience.forEach((j, i) => add(`job-${i}`, `${j.role} at ${j.company}`, lines(
