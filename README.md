@@ -2,7 +2,7 @@
 
 **Live:** https://codemitvishal.github.io/ (also at https://codemitvishal.github.io/cloudfolio/)
 
-Personal portfolio of Vishal Singh, Cloud Engineer (Azure & Kubernetes · DevSecOps · Agentic AI): experience, professional and open-source projects, skills and certifications, education, master's thesis, free courses, and contact.
+Personal portfolio of Vishal Singh, hands-on Software Engineer (C# / .NET APIs, event-driven back ends, Angular, Azure & Kubernetes, AI agents): experience, professional and open-source projects, skills and certifications, education, master's thesis, free courses, and contact.
 
 ## Tech
 

@@ -155,6 +155,7 @@ function Hero() {
           <p className="status"><span className="dot" aria-hidden="true" /> Open to new opportunities · {profile.location}</p>
           <h1>{profile.name}</h1>
           <p className="role">{profile.role} <span className="sep" aria-hidden="true">/</span> <span className="accent">Azure Solutions Architect Expert</span></p>
+          <ul className="code-tags" aria-label="What I code">{profile.headline.map((h) => <li key={h}>{h}</li>)}</ul>
           <p className="intro">{profile.intro}</p>
           <div className="hero-cta">
             <a className="btn" href="#contact">Let's talk <Icon name="arrow" size={16} /></a>
@@ -213,11 +214,12 @@ function About() {
         <div className="card reveal highlights">
           <h3>What I bring to your team</h3>
           <ul className="checks">
-            <li>Cloud platforms on <b>Azure &amp; Kubernetes</b>, from design to production</li>
-            <li><b>CI/CD, GitOps</b> and infrastructure as code (Terraform)</li>
-            <li><b>Security &amp; GDPR</b> built in from day one</li>
-            <li><b>AI agents, RAG and MCP</b>, and safe AI adoption for teams</li>
-            <li><b>Team leadership</b>: mentoring, reviews, stakeholder demos</li>
+            <li><b>C# / .NET REST APIs</b> and microservices in <b>Clean Architecture</b></li>
+            <li><b>Event-driven back ends</b>: Service Bus, Event Hubs, Outbox pattern, change trackers</li>
+            <li><b>Data processors &amp; pipelines</b> that move millions of rows reliably</li>
+            <li><b>AI agent back ends</b>: tool APIs, MCP servers, RAG</li>
+            <li><b>Angular</b> front ends, <b>CI/CD pipelines</b> and <b>code reviews</b></li>
+            <li>Running it all on <b>Azure &amp; Kubernetes</b>, secure by design</li>
           </ul>
         </div>
       </div>

@@ -96,6 +96,9 @@ h1, h2, h3, h4 { color: var(--text); line-height: 1.2; letter-spacing: -0.02em; 
 .role { font-size: clamp(19px, 2.2vw, 24px); font-weight: 600; color: var(--text); }
 .role .sep { color: var(--line); margin: 0 6px; }
 .accent { color: var(--accent); }
+.code-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.code-tags li { font-family: "JetBrains Mono", monospace; font-size: 13.5px; font-weight: 500; padding: 5px 11px; border-radius: 8px;
+  color: var(--accent); background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent); }
 .intro { font-size: 18px; max-width: 610px; margin-top: 18px; color: var(--body); }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 30px 0 26px; }
 .socials { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }

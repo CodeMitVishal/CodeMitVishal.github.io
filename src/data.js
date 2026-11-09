@@ -3,23 +3,24 @@ const BASE = import.meta.env.BASE_URL;
 
 export const profile = {
   name: "Vishal Singh",
-  role: "Cloud Engineer",
-  headline: ["Azure & Kubernetes", "DevSecOps", "Agentic AI"],
+  role: "Software Engineer",
+  headline: ["C# / .NET APIs", "Event-driven back ends", "Angular", "Azure & Kubernetes", "AI agents"],
   location: "Augsburg, Germany",
   email: "vishal8840906676@gmail.com",
   photo: `${BASE}vishal.jpg`,
   cv: `${BASE}Vishal_Singh_CV.pdf`,
   intro:
-    "I build and run cloud platforms on Azure and Kubernetes, automate delivery with CI/CD and infrastructure as code, " +
-    "and build security in from day one. I also build AI agents and help teams adopt AI safely.",
+    "I write the code: C# / .NET REST APIs, event-driven back ends with Service Bus and the Outbox pattern, data processors and pipelines, " +
+    "AI agent back ends and Angular front ends, in Clean Architecture. Then I ship and run it on Azure and Kubernetes with CI/CD.",
   about: [
-    "Cloud Engineer and Azure Solutions Architect Expert with 7+ years of experience, from .NET and Angular product teams in India to cloud products at baramundi software in Augsburg.",
+    "Hands-on software engineer and Azure Solutions Architect Expert with 7+ years of writing production code, from .NET and Angular product teams in India to cloud products at baramundi software in Augsburg.",
+    "Most of my day is code: C# / .NET Web APIs and REST APIs, data processors and change trackers, events over Service Bus and Event Hubs (event-driven architecture, Outbox pattern), back ends for AI agents, and Angular front ends, structured with Clean Architecture. I build the CI/CD pipelines that ship it and review my teammates' pull requests.",
     "I have led teams of 5–6 developers on insurance platforms for global clients such as Samsung and Assurant, and built GDPR-compliant systems for the EU market.",
     "Today I work on a cloud platform that keeps company devices secure and up to date (AKS, IoT Hub, Event Hubs), and I lead AI adoption: AI agents, RAG, MCP, and coaching teams on GitHub Copilot and Claude.",
     "Outside work I teach: I founded The Growth Club, a learning community of 2,000+ members, and publish free Python and Git courses on my YouTube channel CodeMitVishal.",
   ],
   stats: [
-    { value: "7+", label: "years building cloud software" },
+    { value: "7+", label: "years writing production code" },
     { value: "7", label: "certifications (6 Microsoft)" },
     { value: "5–6", label: "developers led" },
     { value: "~4", label: "years hands-on with AI" },
@@ -43,16 +44,17 @@ export const experience = [
     period: "03/2025 – Present",
     context: "baramundi Endpoint Management: software that keeps company devices secure, patched and up to date.",
     points: [
-      "Build and run microservices on Azure Kubernetes (AKS) that scale with demand (KEDA) and deploy automatically through GitOps (ArgoCD).",
+      "Write C# / .NET 10 microservices and REST and GraphQL APIs, structured with Clean Architecture.",
+      "Build data processors and change trackers that turn device changes into events, published over Service Bus and Event Hubs (event-driven architecture, Outbox pattern so no event is lost).",
+      "Build the back ends for AI agents: tool APIs, retrieval over company data (RAG) and MCP servers, on Azure AI Foundry and Semantic Kernel.",
+      "Build and run the services on Azure Kubernetes (AKS), scaling with demand (KEDA) and deploying through CI/CD pipelines and GitOps (ArgoCD).",
       "Designed how devices securely sync their settings with the cloud, at scale (Azure IoT Hub Device Twin).",
-      "Built reliable event messaging with Event Hubs and Service Bus, using the Outbox pattern so no event is lost.",
       "Implemented sign-in and identity for customer-facing apps (B2C), with several layers of protection.",
-      "Built AI agent prototypes that use tools and search company data (Azure AI Foundry, Semantic Kernel, MCP, RAG).",
       "Lead AI adoption across the company: find where AI adds value, assess risks and governance, coach teams on GitHub Copilot and Claude.",
       "Designed GraphQL APIs for device data, and admin dashboards that spot unhealthy devices and fix them automatically.",
-      "Lead 5 developers across the Angular front end and AKS back end: mentoring, code reviews and sprint demos.",
+      "Build Angular 20 front ends, and lead 5 developers across front end and back end: pull-request reviews, mentoring and sprint demos.",
     ],
-    stack: ["AKS", "KEDA", "ArgoCD", "IoT Hub", "Event Hubs", "Service Bus", "Redis", "Azure SQL", "PostgreSQL", "MongoDB", ".NET 10", "GraphQL", "Angular 20"],
+    stack: ["C#", ".NET 10", "REST", "GraphQL", "Clean Architecture", "Outbox pattern", "Service Bus", "Event Hubs", "Angular 20", "AKS", "KEDA", "ArgoCD", "IoT Hub", "Redis", "Azure SQL", "PostgreSQL", "MongoDB"],
   },
   {
     role: "Full-Stack Developer Lead / Team Lead",
@@ -65,12 +67,13 @@ export const experience = [
     context: "Clients: Assurant (global insurance), KPK FinServ (financial reconciliation), GradImages (graduation photography).",
     points: [
       "Led 5–6 developers building insurance platforms for global clients, including Samsung (UK, Italy, Germany, Spain).",
-      "Owned CI/CD from test to production in Azure DevOps, with automatic code-quality and security checks (SonarCloud).",
+      "Wrote C# / .NET Core REST APIs and Angular front ends, and reviewed the team's pull requests.",
+      "Owned the CI/CD pipelines from test to production in Azure DevOps, with automatic code-quality and security checks (SonarCloud).",
       "Set up Azure infrastructure with Terraform and ARM templates; packaged services with Docker.",
       "Built GDPR-compliant systems for EU markets: consent management, protected personal data, Key Vault and audit logging.",
       "Connected risk-data providers (Verisk, LexisNexis) to an underwriting tool, giving underwriters decision-ready data.",
       "Built Azure AI face recognition that finds graduates in ceremony photos (GradImages).",
-      "Loaded Excel files with 1.5M+ rows into Cosmos DB using Azure Durable Functions.",
+      "Built a data-processing pipeline that loads Excel files with 1.5M+ rows into Cosmos DB with Azure Durable Functions.",
     ],
     stack: ["Azure Functions", "API Management", "Azure AI", "Terraform", "Docker", "Azure DevOps", "SonarCloud", ".NET Core", "Angular 11"],
   },
@@ -110,20 +113,20 @@ export const workProjects = [
     org: "baramundi software · 2025–now",
     logo: `${BASE}logos/baramundi.svg`,
     text: "Cloud services for baramundi Endpoint Management: devices sync securely with the cloud, events never get lost, and dashboards fix unhealthy devices automatically.",
-    tags: ["AKS", "KEDA", "ArgoCD", "IoT Hub", "Event Hubs", "GraphQL"],
+    tags: ["C#", ".NET", "Clean Architecture", "Service Bus", "Outbox", "AKS", "GraphQL"],
     icon: "cloud",
     featured: true,
-    story: { challenge: "Company devices must stay patched, configured and healthy, and every change has to reach the cloud reliably.", approach: "Microservices on AKS that scale with KEDA and ship through ArgoCD; device settings sync via IoT Hub Device Twin; Event Hubs and Service Bus with the Outbox pattern.", result: "Settings sync securely at scale, no event gets lost, and dashboards spot unhealthy devices and fix them automatically." },
+    story: { challenge: "Company devices must stay patched, configured and healthy, and every change has to reach the cloud reliably.", approach: "C# / .NET microservices and APIs in Clean Architecture; change trackers publish events over Service Bus and Event Hubs with the Outbox pattern; device settings sync via IoT Hub Device Twin; runs on AKS with KEDA and ArgoCD.", result: "Settings sync securely at scale, no event gets lost, and dashboards spot unhealthy devices and fix them automatically." },
   },
   {
     title: "AI Agents & AI Adoption",
     org: "baramundi software · 2025–now",
     logo: `${BASE}logos/baramundi.svg`,
     text: "AI agent prototypes that use tools and search company knowledge, plus a company-wide AI adoption programme with risk assessment and coaching.",
-    tags: ["Azure AI Foundry", "Semantic Kernel", "MCP", "RAG", "Copilot"],
+    tags: ["C#", "Azure AI Foundry", "Semantic Kernel", "MCP", "RAG"],
     icon: "spark",
     featured: true,
-    story: { challenge: "Teams want to use AI, but need useful, safe use cases and clear governance first.", approach: "AI agent prototypes that call tools and search company data (Azure AI Foundry, Semantic Kernel, MCP, RAG), plus risk and governance assessments.", result: "A company-wide AI adoption programme, with teams coached on GitHub Copilot and Claude." },
+    story: { challenge: "Teams want to use AI, but need useful, safe use cases and clear governance first.", approach: "Agent back ends in C#: tool APIs, MCP servers and RAG search over company data (Azure AI Foundry, Semantic Kernel), plus risk and governance assessments.", result: "A company-wide AI adoption programme, with teams coached on GitHub Copilot and Claude." },
   },
   {
     title: "Global Insurance Sales Platform",
@@ -253,14 +256,14 @@ export const repos = [
 ].map((r) => ({ ...r, url: gh(r.name) }));
 
 export const skills = [
-  { title: "Cloud (Azure)", items: ["AKS", "Azure Functions", "App Services", "Event Hubs", "Service Bus", "IoT Hub", "API Management", "Key Vault", "Application Insights"] },
-  { title: "DevOps & automation", items: ["Azure DevOps CI/CD", "GitOps (ArgoCD)", "Terraform", "ARM templates", "Docker", "Kubernetes", "KEDA"] },
-  { title: "AI", items: ["AI agents", "Azure AI Foundry", "Semantic Kernel", "MCP", "RAG", "Azure AI Search", "AI governance", "GitHub Copilot", "Claude"] },
-  { title: "Security", items: ["OAuth2", "JWT", "Azure AD B2C", "Secrets management", "Defense in depth", "GDPR", "Compliance logging"] },
-  { title: "Back end", items: ["C#", ".NET 10/8", "ASP.NET Web API", "EF Core", "REST", "GraphQL", "Microservices", "Event-driven design", "Python", "FastAPI"] },
-  { title: "Front end & data", items: ["Angular", "TypeScript", "React", "SQL Server", "Azure SQL", "PostgreSQL", "MongoDB", "Cosmos DB", "Redis"] },
-  { title: "Quality", items: ["TDD", "SonarCloud", "xUnit", "NUnit", "Jasmine", "Postman"] },
-  { title: "Ways of working", items: ["Scrum (CSM)", "Jira", "Code reviews", "Mentoring", "Stakeholder demos"] },
+  { title: "Back end (C# / .NET)", items: ["C#", ".NET 10/8", "ASP.NET Core Web API", "REST APIs", "GraphQL", "EF Core", "Background workers", "Data processors", "Change tracking", "Azure Functions", "Python", "FastAPI"] },
+  { title: "Architecture & patterns", items: ["Clean Architecture", "Event-driven architecture", "Outbox pattern", "Domain events", "Microservices", "API design", "Defense in depth"] },
+  { title: "Messaging & data", items: ["Azure Service Bus", "Event Hubs", "IoT Hub", "Redis", "SQL Server", "Azure SQL", "PostgreSQL", "MongoDB", "Cosmos DB", "Data pipelines", "Data Factory"] },
+  { title: "Front end", items: ["Angular 20", "TypeScript", "RxJS", "Angular Material", "React"] },
+  { title: "AI engineering", items: ["AI agent back ends", "Azure AI Foundry", "Semantic Kernel", "MCP servers", "RAG", "Azure AI Search", "AI governance", "GitHub Copilot", "Claude"] },
+  { title: "Cloud & DevOps", items: ["AKS", "Kubernetes", "KEDA", "Docker", "CI/CD pipelines", "Azure DevOps", "GitOps (ArgoCD)", "Terraform", "ARM templates", "App Services", "API Management", "Key Vault", "Application Insights"] },
+  { title: "Quality & security", items: ["Code reviews", "TDD", "xUnit", "NUnit", "Jasmine", "SonarCloud", "Postman", "OAuth2", "JWT", "Azure AD B2C", "GDPR"] },
+  { title: "Ways of working", items: ["Scrum (CSM)", "Jira", "Pull-request reviews", "Mentoring", "Stakeholder demos"] },
 ];
 
 // Official Microsoft badges and certification pages (learn.microsoft.com).
