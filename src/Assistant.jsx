@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { assistant, profile } from "./data.js";
 import { buildKnowledge, searchKnowledge } from "./knowledge.js";
 import { useLang } from "./i18n.jsx";
+import { PRIVACY_WARNING, containsPersonalData } from "./privacy.js";
 
 const SUGGESTIONS = [
   "What does Vishal work on today?",
@@ -70,6 +71,13 @@ export default function Assistant() {
   const send = async (text, searchText = text) => {
     const question = text.trim().slice(0, 800);
     if (!question || busy) return;
+    // Personal data never leaves the browser and is never stored: warn, and keep the text
+    // in the box so the visitor can remove the personal part.
+    if (containsPersonalData(question)) {
+      setMessages([...messages, { role: "assistant", content: t(PRIVACY_WARNING), error: true }]);
+      inputRef.current?.focus();
+      return;
+    }
     const next = [...messages, { role: "user", content: question }];
     setMessages(next);
     setInput("");
@@ -87,6 +95,8 @@ export default function Assistant() {
       const data = await res.json().catch(() => ({}));
       if (res.ok && data.reply) {
         setMessages([...next, { role: "assistant", content: data.reply }]);
+      } else if (data.error === "personal_data") {
+        setMessages([...messages, { role: "assistant", content: t(PRIVACY_WARNING), error: true }]);
       } else if (res.status === 429 && data.error === "rate_limited") {
         setMessages([...next, { role: "assistant", content: t("You're asking very quickly. Please wait a minute and try again."), error: true }]);
       } else {
@@ -145,7 +155,7 @@ export default function Assistant() {
               placeholder={t("Ask about experience, projects or skills…")} />
             <button type="submit" disabled={busy || !input.trim()}>{t("Send")}</button>
           </form>
-          <p className="ai-foot">{t("AI can make mistakes; please check important facts. Don't share personal or confidential information.")}</p>
+          <p className="ai-foot">{t("AI can make mistakes; please check important facts.")}</p>
         </section>
       )}
     </>
