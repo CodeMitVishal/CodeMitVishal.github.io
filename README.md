@@ -20,8 +20,8 @@ npm run dev
 
 ## Deploy
 
-Push to `main`. The [GitHub Actions workflow](.github/workflows/deploy.yml) builds the site and publishes it to https://codemitvishal.github.io/ in about a minute.
-
 ```bash
-git push
+npm run deploy
 ```
+
+This builds the site and pushes the result to this repo's `gh-pages` branch, which GitHub Pages serves at https://codemitvishal.github.io/. The source code lives on `main`.
