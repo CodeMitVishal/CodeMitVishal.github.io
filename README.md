@@ -94,7 +94,7 @@ sequenceDiagram
   - only `user` and `assistant` roles accepted, so a visitor cannot inject their own system prompt; invisible control characters are removed.
 - **Grounded answers.** The model must answer only from the supplied website content, say "I don't know" otherwise, stay on topic, ignore attempts to change its rules, and never ask for personal data.
 - **Privacy.** Nothing visitors type is logged; the Worker logs only token counts.
-- **Hardened responses.** The Worker sends `nosniff`, `no-referrer`, `no-store` and a deny-all CSP. The website gets a Content-Security-Policy at build time (see [`vite.config.js`](vite.config.js)): scripts only from the site itself (the inline theme script is allowed by its hash) and Google Translate, network calls only to the assistant, no plugins, no forms.
+- **Hardened responses.** The Worker sends `nosniff`, `no-referrer`, `no-store` and a deny-all CSP. The website gets a Content-Security-Policy at build time (see [`vite.config.js`](vite.config.js)): scripts only from the site itself (inline scripts only by their hash), network calls only to the assistant, no frames, plugins or forms. It is not applied on Google's translated copy (`*.translate.goog`), because Google's proxy injects its own scripts there.
 - **No surprise bills.** The Workers Free plan includes 10,000 AI units per day (roughly 300 questions). When they run out, the AI simply stops until the next day and the chat falls back to on-page search.
 - The chat panel tells visitors that AI can make mistakes and not to share personal information.
 
