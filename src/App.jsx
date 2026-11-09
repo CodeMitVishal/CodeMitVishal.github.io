@@ -130,7 +130,6 @@ function Hero() {
           </p>
           <div className="hero-actions">
             <a className="cta" href={`mailto:${profile.email}`}>Write to me</a>
-            <a className="textlink" href={profile.cv} download>Download CV <span aria-hidden="true">↓</span></a>
             <a className="textlink" href={profile.social[0].url} {...ext}>LinkedIn <span aria-hidden="true">↗</span></a>
             <a className="textlink" href={profile.social[1].url} {...ext}>GitHub <span aria-hidden="true">↗</span></a>
           </div>
@@ -356,7 +355,9 @@ function Education() {
 
 function Teaching() {
   return (
-    <Section id="teaching" num="06" title={<>Teaching &amp; leadership</>} note="I learn by explaining and lead by doing: free courses, a learning community, and years of leading teams and volunteers.">
+    <Section id="teaching" num="06" title={<>Teaching &amp; leadership</>}
+      note="Teaching, leading and social service: free courses, a learning community, and volunteer work since my student days.">
+      <h3 className="minor first">Teaching &amp; community</h3>
       <ul className="index">
         {courses.map((c) => (
           <li key={c.title}>
@@ -365,7 +366,17 @@ function Teaching() {
             <span className="index-meta">{slashes(c.tags)}</span>
           </li>
         ))}
-        {leadership.map((l) => (
+        {leadership.filter((l) => l.title.startsWith("Founder")).map((l) => (
+          <li key={l.title}>
+            <span className="index-title">{l.title}</span>
+            <span className="index-text">{l.text}</span>
+            <span className="index-meta">{l.period}</span>
+          </li>
+        ))}
+      </ul>
+      <h3 className="minor">Leadership &amp; social service</h3>
+      <ul className="index">
+        {leadership.filter((l) => !l.title.startsWith("Founder")).map((l) => (
           <li key={l.title}>
             <span className="index-title">{l.title}</span>
             <span className="index-text">{l.text}</span>
@@ -404,7 +415,6 @@ function Contact() {
           {profile.social.filter((s) => s.icon !== "mail").map((s) => (
             <li key={s.name}><a href={s.url} {...ext}>{s.name} <span aria-hidden="true">↗</span></a></li>
           ))}
-          <li><a href={profile.cv} download>CV, PDF <span aria-hidden="true">↓</span></a></li>
         </ul>
       </div>
     </section>

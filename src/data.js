@@ -9,7 +9,6 @@ export const profile = {
   location: "Augsburg, Germany",
   email: "vishal8840906676@gmail.com",
   photo: `${BASE}vishal.jpg`,
-  cv: `${BASE}Vishal_Singh_CV.pdf`,
   intro:
     "I write the code: C# / .NET REST APIs, event-driven back ends with Service Bus and the Outbox pattern, data processors and pipelines, " +
     "AI agent back ends and Angular front ends, in Clean Architecture. Then I ship and run it on Azure and Kubernetes with CI/CD.",
@@ -327,5 +326,5 @@ export const testimonials = [
 export const leadership = [
   { title: "Founder, The Growth Club", period: "2025 – now", text: "Global learning community with 2,000+ members; free Python and Git courses on YouTube (CodeMitVishal)." },
   { title: "National Cadet Corps (NCC)", period: "2009 – 2013", text: "Senior Under Officer; led a platoon, awards for discipline." },
-  { title: "National Service Scheme (NSS)", period: "2013 – 2017", text: "Led outreach teams and taught in primary schools." },
+  { title: "National Service Scheme (NSS)", period: "2013 – 2017", text: "Social service volunteer: led community outreach teams and taught children in primary schools." },
 ];
