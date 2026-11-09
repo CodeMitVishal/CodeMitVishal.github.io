@@ -1,6 +1,6 @@
 # Cloudfolio · Vishal Singh
 
-**Live:** https://codemitvishal.github.io/ (also at https://codemitvishal.github.io/cloudfolio/)
+**Live:** https://codemitvishal.github.io/
 
 Personal portfolio of Vishal Singh, hands-on Software Engineer (C# / .NET APIs, event-driven back ends, Angular, Azure & Kubernetes, AI agents): experience, professional and open-source projects, skills and certifications, education, master's thesis, free courses, and contact.
 
@@ -21,11 +21,7 @@ npm run dev
 ## Deploy to GitHub Pages
 
 ```bash
-npm run deploy:root
-```
-
-```bash
 npm run deploy
 ```
 
-The first publishes to https://codemitvishal.github.io/ (the `main` branch of `CodeMitVishal.github.io`). The second publishes to `/cloudfolio/` (this repo's `gh-pages` branch). Run both after editing `src/data.js`.
+This builds the site and publishes it to https://codemitvishal.github.io/ (the `main` branch of [`CodeMitVishal.github.io`](https://github.com/CodeMitVishal/CodeMitVishal.github.io), which only holds the built files). Run it after editing `src/data.js`. This repo's `gh-pages` branch only redirects the old `/cloudfolio/` address to the main site.
