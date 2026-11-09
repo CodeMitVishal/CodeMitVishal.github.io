@@ -270,7 +270,7 @@ export default {
   "**Angular** front ends, **CI/CD pipelines**, and careful **code reviews**.": "**Angular** ফ্রন্টএন্ড, **CI/CD পাইপলাইন** আর যত্নশীল **কোড রিভিউ**।",
   "{role} at {company}": "{company}-তে {role}",
   "{count}, {experts} at Expert level": "{count}, যার {experts}টি Expert স্তরের",
-  "Free Git & Python courses on {youtube}": "{youtube}-এ বিনামূল্যে Git ও Python কোর্স",
+  "Free lessons on cloud, security, programming and more on {youtube}": "{youtube}-এ ক্লাউড, সিকিউরিটি, প্রোগ্রামিং ও আরও অনেক বিষয়ে বিনামূল্যে পাঠ",
   "Also certified: {cert}, {issuer}.": "এছাড়াও সার্টিফায়েড: {cert}, {issuer}।",
   "Choose a language": "ভাষা বেছে নিন",
   "Search languages": "ভাষা খুঁজুন",

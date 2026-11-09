@@ -63,6 +63,7 @@ export function buildKnowledge() {
   ));
 
   add("teaching", "Teaching and leadership", lines(
+    `He publishes free lessons on cloud, security, programming and more on YouTube: ${profile.social.find((s) => /youtube/i.test(s.name))?.url}`,
     ...courses.map((c) => `Course "${c.title}": ${c.text} (${c.url})`),
     ...leadership.map((l) => `${l.title} (${l.period}): ${l.text}`),
   ));

@@ -270,7 +270,7 @@ export default {
   "**Angular** front ends, **CI/CD pipelines**, and careful **code reviews**.": "Front-ends **Angular**, **pipelines CI/CD** et **revues de code** attentives.",
   "{role} at {company}": "{role} chez {company}",
   "{count}, {experts} at Expert level": "{count}, dont {experts} de niveau Expert",
-  "Free Git & Python courses on {youtube}": "Cours gratuits de Git et Python sur {youtube}",
+  "Free lessons on cloud, security, programming and more on {youtube}": "Leçons gratuites sur le cloud, la sécurité, la programmation et bien plus sur {youtube}",
   "Also certified: {cert}, {issuer}.": "Également certifié : {cert}, {issuer}.",
   "Choose a language": "Choisir une langue",
   "Search languages": "Rechercher une langue",

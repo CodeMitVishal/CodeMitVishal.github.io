@@ -270,7 +270,7 @@ export default {
   "**Angular** front ends, **CI/CD pipelines**, and careful **code reviews**.": "**Angular** ஃப்ரண்ட்எண்டுகள், **CI/CD பைப்லைன்கள்**, கவனமான **கோட் மதிப்பாய்வுகள்**.",
   "{role} at {company}": "{company}-இல் {role}",
   "{count}, {experts} at Expert level": "{count}, அவற்றில் {experts} Expert நிலை",
-  "Free Git & Python courses on {youtube}": "{youtube}-இல் இலவச Git & Python பாடநெறிகள்",
+  "Free lessons on cloud, security, programming and more on {youtube}": "{youtube}-இல் கிளவுட், பாதுகாப்பு, புரோகிராமிங் மற்றும் பல தலைப்புகளில் இலவச பாடங்கள்",
   "Also certified: {cert}, {issuer}.": "கூடுதலாகச் சான்றளிக்கப்பட்டது: {cert}, {issuer}.",
   "Choose a language": "மொழியைத் தேர்வுசெய்க",
   "Search languages": "மொழிகளைத் தேடு",

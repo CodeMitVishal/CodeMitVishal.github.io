@@ -276,7 +276,7 @@ export default {
   "**Angular** front ends, **CI/CD pipelines**, and careful **code reviews**.": "**Angular** ಫ್ರಂಟ್ ಎಂಡ್‌ಗಳು, **CI/CD ಪೈಪ್‌ಲೈನ್‌ಗಳು**, ಮತ್ತು ಎಚ್ಚರಿಕೆಯ **ಕೋಡ್ ರಿವ್ಯೂಗಳು**.",
   "{role} at {company}": "{company} ನಲ್ಲಿ {role}",
   "{count}, {experts} at Expert level": "{count}, ಅವುಗಳಲ್ಲಿ {experts} Expert ಮಟ್ಟದವು",
-  "Free Git & Python courses on {youtube}": "{youtube} ನಲ್ಲಿ ಉಚಿತ Git ಮತ್ತು Python ಕೋರ್ಸ್‌ಗಳು",
+  "Free lessons on cloud, security, programming and more on {youtube}": "{youtube} ನಲ್ಲಿ ಕ್ಲೌಡ್, ಭದ್ರತೆ, ಪ್ರೋಗ್ರಾಮಿಂಗ್ ಮತ್ತು ಇನ್ನಷ್ಟು ವಿಷಯಗಳ ಉಚಿತ ಪಾಠಗಳು",
   "Also certified: {cert}, {issuer}.": "ಇದರಲ್ಲೂ ಪ್ರಮಾಣೀಕೃತ: {cert}, {issuer}.",
   "Choose a language": "ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ",
   "Search languages": "ಭಾಷೆಗಳನ್ನು ಹುಡುಕಿ",

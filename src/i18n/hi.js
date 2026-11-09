@@ -358,7 +358,7 @@ export default {
   "**Angular** front ends, **CI/CD pipelines**, and careful **code reviews**.": "**Angular** फ्रंटएंड, **CI/CD पाइपलाइन** और ध्यान से किए गए **कोड रिव्यू**।",
   "{role} at {company}": "{company} में {role}",
   "{count}, {experts} at Expert level": "{count}, जिनमें {experts} Expert स्तर के",
-  "Free Git & Python courses on {youtube}": "{youtube} पर मुफ़्त Git और Python कोर्स",
+  "Free lessons on cloud, security, programming and more on {youtube}": "{youtube} पर क्लाउड, सिक्योरिटी, प्रोग्रामिंग और बहुत कुछ पर मुफ़्त पाठ",
   "Also certified: {cert}, {issuer}.": "इसके अलावा प्रमाणित: {cert}, {issuer}।",
 
   // language picker and AI assistant

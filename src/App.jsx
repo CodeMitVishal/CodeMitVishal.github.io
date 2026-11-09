@@ -195,7 +195,7 @@ function Hero() {
           </div>
           <div>
             <dt>{t("Teaching")}</dt>
-            <dd><span>{tr("Free Git & Python courses on {youtube}", { youtube: <a href={profile.social[2].url} {...ext}>YouTube</a> })}</span></dd>
+            <dd><span>{tr("Free lessons on cloud, security, programming and more on {youtube}", { youtube: <a href={profile.social[2].url} {...ext}>YouTube</a> })}</span></dd>
           </div>
         </dl>
       </div>
