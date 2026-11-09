@@ -297,7 +297,6 @@ export default {
   "Which languages does he speak?": "તેઓ કઈ ભાષાઓ બોલે છે?",
   "Your question": "તમારો પ્રશ્ન",
   "Ask about experience, projects or skills…": "અનુભવ, પ્રોજેક્ટ્સ કે કૌશલ્યો વિશે પૂછો…",
-  "AI can make mistakes; please check important facts.": "AI ભૂલ કરી શકે છે; મહત્ત્વની માહિતી ચકાસી લો.",
   "Please don't share personal details in this chat. It is only for questions about Vishal's professional experience.": "કૃપા કરીને આ ચેટમાં તમારી વ્યક્તિગત માહિતી શેર ન કરો. આ ચેટ ફક્ત વિશાલના વ્યાવસાયિક અનુભવ વિશે જાણવા માટે છે.",
   "I couldn't find that on this website. Please email Vishal: {email}": "આ વેબસાઇટ પર એ મળ્યું નહીં. કૃપા કરીને વિશાલને ઇમેઇલ કરો: {email}",
   "Here is what this website says:": "આ વેબસાઇટ પર આ લખ્યું છે:",

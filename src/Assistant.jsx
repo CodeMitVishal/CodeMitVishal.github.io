@@ -155,7 +155,6 @@ export default function Assistant() {
               placeholder={t("Ask about experience, projects or skills…")} />
             <button type="submit" disabled={busy || !input.trim()}>{t("Send")}</button>
           </form>
-          <p className="ai-foot">{t("AI can make mistakes; please check important facts.")}</p>
         </section>
       )}
     </>

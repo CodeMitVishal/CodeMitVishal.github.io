@@ -297,7 +297,6 @@ export default {
   "Which languages does he speak?": "Quali lingue parla?",
   "Your question": "La tua domanda",
   "Ask about experience, projects or skills…": "Chiedi di esperienza, progetti o competenze…",
-  "AI can make mistakes; please check important facts.": "L’IA può sbagliare; verifica le informazioni importanti.",
   "Please don't share personal details in this chat. It is only for questions about Vishal's professional experience.": "Per favore, non condividere dati personali in questa chat. Serve solo per domande sull’esperienza professionale di Vishal.",
   "I couldn't find that on this website. Please email Vishal: {email}": "Non l’ho trovato su questo sito. Scrivi a Vishal: {email}",
   "Here is what this website says:": "Ecco cosa dice questo sito:",

@@ -400,7 +400,6 @@ export default {
   "Which languages does he speak?": "Welche Sprachen spricht er?",
   "Your question": "Ihre Frage",
   "Ask about experience, projects or skills…": "Fragen Sie nach Erfahrung, Projekten oder Fähigkeiten…",
-  "AI can make mistakes; please check important facts.": "KI kann Fehler machen; prüfen Sie wichtige Fakten.",
   "Please don't share personal details in this chat. It is only for questions about Vishal's professional experience.": "Bitte teilen Sie in diesem Chat keine persönlichen Daten. Er ist nur für Fragen zu Vishals beruflicher Erfahrung gedacht.",
   "I couldn't find that on this website. Please email Vishal: {email}": "Das habe ich auf dieser Website nicht gefunden. Schreiben Sie Vishal gern: {email}",
   "Here is what this website says:": "Das steht auf dieser Website:",
