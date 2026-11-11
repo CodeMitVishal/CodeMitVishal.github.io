@@ -7,6 +7,7 @@ import { LangProvider, useLang } from "./i18n.jsx";
 import LanguagePicker from "./LanguagePicker.jsx";
 import Assistant from "./Assistant.jsx";
 import BrandIcon from "./BrandIcon.jsx";
+import FlowIcon from "./FlowIcon.jsx";
 
 /* A small, hand-tuned icon set. Everything else is typography. */
 const PATHS = {
@@ -87,7 +88,10 @@ function Flow({ lanes, caption }) {
           {lane.name && <p className="lane-name">{t(lane.name)}</p>}
           <ol aria-label={lane.name ? t(lane.name) : t("Flow")}>
             {lane.steps.map(([name, detail], i) => (
-              <li key={name}><span className="flow-i">{String(i + 1).padStart(2, "0")}</span><b>{t(name)}</b><span>{t(detail)}</span></li>
+              <li key={name}>
+                <span className="flow-top"><FlowIcon step={name} /><span className="flow-i">{String(i + 1).padStart(2, "0")}</span></span>
+                <b>{t(name)}</b><span className="flow-d">{t(detail)}</span>
+              </li>
             ))}
           </ol>
         </div>
