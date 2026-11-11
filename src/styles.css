@@ -458,14 +458,9 @@ h1, h2, h3 { color: var(--ink); font-weight: 400; }
 /* .NET purple is too faint on the dark page: use the white logo variant there, as .NET's brand allows */
 :root[data-theme="dark"] .flow-icon-dotnet path { fill: var(--ink); }
 
-/* Key words (src/Highlight.jsx): bold plus a soft highlighter stroke under the lower part of the
-   letters, in the accent colour. Scannable at a glance, calm to read, the same in every language. */
-:root { --hl: rgba(178, 63, 14, 0.16); }
-:root[data-theme="dark"] { --hl: rgba(255, 145, 89, 0.22); }
-.hl { font-weight: 600; color: var(--ink); padding: 0 .08em; margin: 0 -.08em;
-  background: linear-gradient(to top, var(--hl) 0.42em, transparent 0.42em);
-  -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-/* Instrument Serif has no bold: never fake one, the marker stroke carries the emphasis there */
-.prose p:first-child .hl { font-weight: inherit; background-image: linear-gradient(to top, var(--hl-strong) 0.4em, transparent 0.4em); }
-:root { --hl-strong: rgba(178, 63, 14, 0.28); }
-:root[data-theme="dark"] { --hl-strong: rgba(255, 145, 89, 0.34); }
+/* Key words (src/Highlight.jsx): weight only, like a stress in speech. No underline (that means
+   "link") and no colour (orange means "link hover" here). Body text is --ink-2, so the darker --ink
+   plus semibold is enough contrast to catch a scanning eye without shouting. */
+.hl { font-weight: 600; color: var(--ink); }
+/* The large serif lead has no bold weight: use italic there, the way the headline already emphasises words. */
+.prose p:first-child .hl { font-weight: inherit; font-style: italic; }

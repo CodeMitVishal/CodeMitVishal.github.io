@@ -222,7 +222,7 @@ function About() {
   return (
     <Section id="about" num="00" title={t("About")} note={t("The short version.")}>
       <div className="prose">
-        {profile.about.map((p) => <p key={p.slice(0, 24)}><Hl text={t(p)} max={3} /></p>)}
+        {profile.about.map((p) => <p key={p.slice(0, 24)}><Hl text={t(p)} max={2} /></p>)}
       </div>
       <ol className="brings">
         {BRINGS.map((item) => <li key={item}><span>{tr(item)}</span></li>)}
@@ -256,7 +256,7 @@ function Experience() {
             </summary>
             <div className="role-body">
               {job.context && <p className="role-context">{t(job.context)}</p>}
-              <ul>{job.points.map((p) => <li key={p}><Hl text={t(p)} /></li>)}</ul>
+              <ul>{job.points.map((p) => <li key={p}><Hl text={t(p)} max={1} /></li>)}</ul>
               <p className="stack"><span>{t("Stack")}</span> {slashes(job.stack)}</p>
             </div>
           </details>
@@ -293,9 +293,9 @@ function Work() {
           </header>
           <Flow lanes={p.flows || [{ steps: p.flow }]} caption={t("Fig. {n}: {title}, from end to end.", { n: i + 1, title: t(p.title) })} />
           <dl className="case-story">
-            <div><dt>{t("Problem")}</dt><dd><Hl text={t(p.story.challenge)} /></dd></div>
-            <div><dt>{t("What I built")}</dt><dd><Hl text={t(p.story.approach)} /></dd></div>
-            <div><dt>{t("Outcome")}</dt><dd><Hl text={t(p.story.result)} /></dd></div>
+            <div><dt>{t("Problem")}</dt><dd><Hl text={t(p.story.challenge)} max={1} /></dd></div>
+            <div><dt>{t("What I built")}</dt><dd><Hl text={t(p.story.approach)} max={1} /></dd></div>
+            <div><dt>{t("Outcome")}</dt><dd><Hl text={t(p.story.result)} max={1} /></dd></div>
           </dl>
           {p.notes && (
             <dl className="case-notes">
