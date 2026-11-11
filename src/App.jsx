@@ -6,6 +6,7 @@ import {
 import { LangProvider, useLang } from "./i18n.jsx";
 import LanguagePicker from "./LanguagePicker.jsx";
 import Assistant from "./Assistant.jsx";
+import BrandIcon from "./BrandIcon.jsx";
 
 /* A small, hand-tuned icon set. Everything else is typography. */
 const PATHS = {
@@ -166,8 +167,8 @@ function Hero() {
           </p>
           <div className="hero-actions">
             <a className="cta" href={`mailto:${profile.email}`}>{t("Write to me")}</a>
-            <a className="textlink" href={profile.social[0].url} {...ext}>LinkedIn <span aria-hidden="true">↗</span></a>
-            <a className="textlink" href={profile.social[1].url} {...ext}>GitHub <span aria-hidden="true">↗</span></a>
+            <a className="textlink" href={profile.social[0].url} {...ext}><BrandIcon name="linkedin" />LinkedIn <span aria-hidden="true">↗</span></a>
+            <a className="textlink" href={profile.social[1].url} {...ext}><BrandIcon name="github" />GitHub <span aria-hidden="true">↗</span></a>
           </div>
         </div>
         <figure className="portrait">
@@ -195,7 +196,7 @@ function Hero() {
           </div>
           <div>
             <dt>{t("Teaching")}</dt>
-            <dd><span>{tr("Free lessons on cloud, security, programming and more on {youtube}", { youtube: <a href={profile.social[2].url} {...ext}>YouTube</a> })}</span></dd>
+            <dd><span>{tr("Free lessons on cloud, security, programming and more on {youtube}", { youtube: <a href={profile.social[2].url} {...ext}><BrandIcon name="youtube" />YouTube</a> })}</span></dd>
           </div>
         </dl>
       </div>
@@ -304,7 +305,7 @@ function Work() {
       <ul className="index">
         {more.map((p) => (
           <li key={p.title}>
-            <span className="index-title">{p.url ? <a href={p.url} {...ext}>{t(p.title)} <span aria-hidden="true">↗</span></a> : t(p.title)}</span>
+            <span className="index-title">{p.url ? <a href={p.url} {...ext}><BrandIcon url={p.url} />{t(p.title)} <span aria-hidden="true">↗</span></a> : t(p.title)}</span>
             <span className="index-text">{t(p.text)}</span>
             <span className="index-meta">{t(p.org)}</span>
           </li>
@@ -312,7 +313,7 @@ function Work() {
       </ul>
 
       <div className="oss-head">
-        <h3 className="minor">{t("On GitHub")} <span className="count">{t("{n} repositories", { n: repos.length })}</span></h3>
+        <h3 className="minor"><BrandIcon name="github" />{t("On GitHub")} <span className="count">{t("{n} repositories", { n: repos.length })}</span></h3>
         <label className="find">
           <span className="sr">{t("Search repositories")}</span>
           <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder={t("Search…")} />
@@ -354,7 +355,7 @@ function Credentials() {
               <img src={c.badge} alt={t("Microsoft Certified: {name} badge", { name: c.name })} width="120" height="120" loading="lazy" />
               <span className="badge-name">{c.name}</span>
               <span className="badge-meta">{c.exam} · {t(c.level)}</span>
-              <span className="badge-link">Microsoft Learn <span aria-hidden="true">↗</span></span>
+              <span className="badge-link"><BrandIcon name="microsoft" />Microsoft Learn <span aria-hidden="true">↗</span></span>
             </a>
           </li>
         ))}
@@ -363,7 +364,7 @@ function Credentials() {
         {other.map((c) => (
           <span key={c.name}>{tr("Also certified: {cert}, {issuer}.", { cert: <a href={c.url} {...ext}>{c.name}</a>, issuer: c.issuer })}</span>
         ))}
-        {transcript && <> <a className="textlink" href={transcript} {...ext}>{t("Verify my transcript on Microsoft Learn")} ↗</a></>}
+        {transcript && <> <a className="textlink" href={transcript} {...ext}><BrandIcon name="microsoft" />{t("Verify my transcript on Microsoft Learn")} ↗</a></>}
       </p>
     </Section>
   );
@@ -417,7 +418,7 @@ function Teaching() {
   const period = usePeriod();
   const Row = ({ title, text, meta, url }) => (
     <li>
-      <span className="index-title">{url ? <a href={url} {...ext}>{title} <span aria-hidden="true">↗</span></a> : title}</span>
+      <span className="index-title">{url ? <a href={url} {...ext}><BrandIcon url={url} />{title} <span aria-hidden="true">↗</span></a> : title}</span>
       <span className="index-text">{text}</span>
       <span className="index-meta">{meta}</span>
     </li>
@@ -463,13 +464,13 @@ function Contact() {
         <p className="kicker"><span className="num">07</span> {t("Contact")}</p>
         <h2 id="contact-h">{t("Have a system that needs building, or a team that needs one more engineer?")}</h2>
         <div className="mail">
-          <a href={`mailto:${profile.email}`}>{profile.email}</a>
+          <a href={`mailto:${profile.email}`}><BrandIcon url={`mailto:${profile.email}`} />{profile.email}</a>
           <button onClick={copy} aria-live="polite"><Icon name={copied ? "check" : "copy"} size={16} />{copied ? t("Copied") : t("Copy")}</button>
         </div>
         <p className="contact-note"><b>{t("Available to start a new role on 1 March 2027.")}</b> {t("I usually reply within one or two working days. Based in Augsburg, Germany (CET).")}</p>
         <ul className="elsewhere">
           {profile.social.filter((s) => s.icon !== "mail").map((s) => (
-            <li key={s.name}><a href={s.url} {...ext}>{s.name} <span aria-hidden="true">↗</span></a></li>
+            <li key={s.name}><a href={s.url} {...ext}><BrandIcon url={s.url} />{s.name} <span aria-hidden="true">↗</span></a></li>
           ))}
         </ul>
       </div>
@@ -483,7 +484,7 @@ function Colophon() {
     <footer className="colophon">
       <div className="wrap colophon-inner">
         <p>© {new Date().getFullYear()} {t("Vishal Singh")}.</p>
-        <p>{t("Set in Instrument Serif, Geist and Geist Mono. Built with React and Vite, hosted on GitHub Pages.")} <a href="https://github.com/CodeMitVishal/CodeMitVishal.github.io" {...ext}>{t("Source")} ↗</a></p>
+        <p>{t("Set in Instrument Serif, Geist and Geist Mono. Built with React and Vite, hosted on GitHub Pages.")} <a href="https://github.com/CodeMitVishal/CodeMitVishal.github.io" {...ext}><BrandIcon name="github" />{t("Source")} ↗</a></p>
       </div>
     </footer>
   );

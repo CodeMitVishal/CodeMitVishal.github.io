@@ -446,3 +446,9 @@ h1, h2, h3 { color: var(--ink); font-weight: 400; }
   .ai-panel { inset: 0; width: auto; height: 100dvh; border: 0; border-radius: 0; }
 }
 .minor.first { margin-top: 0; }
+
+/* Official brand marks next to links (src/BrandIcon.jsx): sized to the text they sit in */
+.brand { display: inline-block; width: 1.05em; height: 1.05em; flex: none; vertical-align: -0.16em; margin-right: 0.42em; }
+.brand-microsoft { width: 0.95em; height: 0.95em; vertical-align: -0.1em; }
+.mail .brand { width: 0.8em; height: 0.8em; vertical-align: 0.02em; margin-right: 0.3em; }
+.minor .brand { width: 0.78em; height: 0.78em; vertical-align: -0.02em; margin-right: 0.32em; }
