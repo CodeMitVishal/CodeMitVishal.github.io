@@ -8,6 +8,7 @@ import LanguagePicker from "./LanguagePicker.jsx";
 import Assistant from "./Assistant.jsx";
 import BrandIcon from "./BrandIcon.jsx";
 import FlowIcon from "./FlowIcon.jsx";
+import Hl from "./Highlight.jsx";
 
 /* A small, hand-tuned icon set. Everything else is typography. */
 const PATHS = {
@@ -167,7 +168,7 @@ function Hero() {
           <p className="kicker">{t("Vishal Singh")} — {t(profile.role)}, {t(profile.location)}</p>
           <h1 id="hero-h">{tr("I build C# back ends that *talk in events*, Angular front ends, and the pipelines that *ship them* to Azure.")}</h1>
           <p className="hero-sub">
-            {t(profile.summary)}
+            <Hl text={t(profile.summary)} />
           </p>
           <div className="hero-actions">
             <a className="cta" href={`mailto:${profile.email}`}>{t("Write to me")}</a>
@@ -221,7 +222,7 @@ function About() {
   return (
     <Section id="about" num="00" title={t("About")} note={t("The short version.")}>
       <div className="prose">
-        {profile.about.map((p) => <p key={p.slice(0, 24)}>{t(p)}</p>)}
+        {profile.about.map((p) => <p key={p.slice(0, 24)}><Hl text={t(p)} max={3} /></p>)}
       </div>
       <ol className="brings">
         {BRINGS.map((item) => <li key={item}><span>{tr(item)}</span></li>)}
@@ -255,7 +256,7 @@ function Experience() {
             </summary>
             <div className="role-body">
               {job.context && <p className="role-context">{t(job.context)}</p>}
-              <ul>{job.points.map((p) => <li key={p}>{t(p)}</li>)}</ul>
+              <ul>{job.points.map((p) => <li key={p}><Hl text={t(p)} /></li>)}</ul>
               <p className="stack"><span>{t("Stack")}</span> {slashes(job.stack)}</p>
             </div>
           </details>
@@ -292,9 +293,9 @@ function Work() {
           </header>
           <Flow lanes={p.flows || [{ steps: p.flow }]} caption={t("Fig. {n}: {title}, from end to end.", { n: i + 1, title: t(p.title) })} />
           <dl className="case-story">
-            <div><dt>{t("Problem")}</dt><dd>{t(p.story.challenge)}</dd></div>
-            <div><dt>{t("What I built")}</dt><dd>{t(p.story.approach)}</dd></div>
-            <div><dt>{t("Outcome")}</dt><dd>{t(p.story.result)}</dd></div>
+            <div><dt>{t("Problem")}</dt><dd><Hl text={t(p.story.challenge)} /></dd></div>
+            <div><dt>{t("What I built")}</dt><dd><Hl text={t(p.story.approach)} /></dd></div>
+            <div><dt>{t("Outcome")}</dt><dd><Hl text={t(p.story.result)} /></dd></div>
           </dl>
           {p.notes && (
             <dl className="case-notes">

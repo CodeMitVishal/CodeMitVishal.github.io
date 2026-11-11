@@ -457,3 +457,15 @@ h1, h2, h3 { color: var(--ink); font-weight: 400; }
 .minor .brand { width: 0.78em; height: 0.78em; vertical-align: -0.02em; margin-right: 0.32em; }
 /* .NET purple is too faint on the dark page: use the white logo variant there, as .NET's brand allows */
 :root[data-theme="dark"] .flow-icon-dotnet path { fill: var(--ink); }
+
+/* Key words (src/Highlight.jsx): bold plus a soft highlighter stroke under the lower part of the
+   letters, in the accent colour. Scannable at a glance, calm to read, the same in every language. */
+:root { --hl: rgba(178, 63, 14, 0.16); }
+:root[data-theme="dark"] { --hl: rgba(255, 145, 89, 0.22); }
+.hl { font-weight: 600; color: var(--ink); padding: 0 .08em; margin: 0 -.08em;
+  background: linear-gradient(to top, var(--hl) 0.42em, transparent 0.42em);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+/* Instrument Serif has no bold: never fake one, the marker stroke carries the emphasis there */
+.prose p:first-child .hl { font-weight: inherit; background-image: linear-gradient(to top, var(--hl-strong) 0.4em, transparent 0.4em); }
+:root { --hl-strong: rgba(178, 63, 14, 0.28); }
+:root[data-theme="dark"] { --hl-strong: rgba(255, 145, 89, 0.34); }
