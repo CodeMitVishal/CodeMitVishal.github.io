@@ -39,8 +39,6 @@ export default {
   "Full professional proficiency": "পূর্ণ পেশাদার দক্ষতা",
   "Fluent": "সাবলীল",
   "A2 (elementary)": "A2 (প্রাথমিক স্তর)",
-  "My working language for code, documentation, meetings, reviews and teaching.": "কোড, ডকুমেন্টেশন, মিটিং, রিভিউ ও পড়ানোর জন্য আমার কাজের ভাষা।",
-  "Everyday conversations; improving step by step.": "দৈনন্দিন কথাবার্তা; ধাপে ধাপে উন্নতি করছি।",
   "Four teams, seven years. Open a role for the details.": "চারটি টিম, সাত বছর। বিস্তারিত দেখতে একটি পদ খুলুন।",
   "Software Engineer – Cloud Products": "সফটওয়্যার ইঞ্জিনিয়ার – ক্লাউড প্রোডাক্টস",
   "Full-Stack Developer Lead / Team Lead": "ফুল-স্ট্যাক ডেভেলপার লিড / টিম লিড",
@@ -307,4 +305,5 @@ export default {
   "Send": "পাঠান",
   "Augsburg, Germany · available from 1 March 2027": "আউগসবুর্গ, জার্মানি · ১ মার্চ ২০২৭ থেকে উপলব্ধ",
   "Available to start a new role on 1 March 2027.": "১ মার্চ ২০২৭ থেকে নতুন ভূমিকায় যোগ দিতে প্রস্তুত।",
+  "Hindi": "হিন্দি",
 };

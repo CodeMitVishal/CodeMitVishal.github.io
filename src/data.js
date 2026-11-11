@@ -334,9 +334,9 @@ export const leadership = [
 
 // Spoken languages (shown in About). Levels follow CEFR where it applies.
 export const languages = [
-  { name: "English", level: "Full professional proficiency", note: "My working language for code, documentation, meetings, reviews and teaching." },
-  { name: "Hindi", level: "Fluent", note: "" },
-  { name: "German", level: "A2 (elementary)", note: "Everyday conversations; improving step by step." },
+  { name: "English", level: "Full professional proficiency" },
+  { name: "Hindi", level: "Fluent" },
+  { name: "German", level: "A2 (elementary)" },
 ];
 
 // AI assistant: URL of the Cloudflare Worker in worker/ (empty = the assistant uses on-page search only).

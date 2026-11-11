@@ -52,8 +52,6 @@ export default {
   "Full professional proficiency": "Verhandlungssicher",
   "Fluent": "Fließend",
   "A2 (elementary)": "A2 (Grundkenntnisse)",
-  "My working language for code, documentation, meetings, reviews and teaching.": "Meine Arbeitssprache für Code, Dokumentation, Meetings, Reviews und Lehre.",
-  "Everyday conversations; improving step by step.": "Alltagsgespräche; ich lerne Schritt für Schritt weiter.",
 
   // experience
   "Four teams, seven years. Open a role for the details.": "Vier Teams, sieben Jahre. Öffnen Sie eine Station für die Details.",

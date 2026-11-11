@@ -28,7 +28,7 @@ export function buildKnowledge() {
     "Companies Vishal has worked for, newest first (these are his employers; clients he built software for are not employers):",
     ...experience.map((j) => `- ${j.company}, ${j.place}: ${j.role}, ${j.period}`),
   ));
-  add("languages", "Spoken languages", languages.map((l) => `${l.name}: ${l.level}${l.note ? ` (${l.note})` : ""}`).join("\n"));
+  add("languages", "Spoken languages", languages.map((l) => `${l.name}: ${l.level}`).join("\n"));
 
   experience.forEach((j, i) => add(`job-${i}`, `${j.role} at ${j.company}`, lines(
     `${j.role} at ${j.company}, ${j.place}, ${j.period}.${j.award ? ` Award: ${j.award}.` : ""}`,

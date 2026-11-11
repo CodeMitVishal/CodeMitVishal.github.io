@@ -221,15 +221,12 @@ function About() {
       <ol className="brings">
         {BRINGS.map((item) => <li key={item}><span>{tr(item)}</span></li>)}
       </ol>
-      <h3 className="minor">{t("Languages")}</h3>
-      <dl className="spoken">
-        {languages.map((l) => (
-          <div key={l.name}>
-            <dt>{t(l.name)}</dt>
-            <dd><b>{t(l.level)}</b>{l.note && <span>{t(l.note)}</span>}</dd>
-          </div>
-        ))}
-      </dl>
+      <p className="spoken">
+        <span className="spoken-label">{t("Languages")}</span>
+        <span className="spoken-list">
+          {languages.map((l) => <span key={l.name} className="spoken-item"><b>{t(l.name)}</b> {t(l.level)}</span>)}
+        </span>
+      </p>
     </Section>
   );
 }

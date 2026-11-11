@@ -39,8 +39,6 @@ export default {
   "Full professional proficiency": "Piena competenza professionale",
   "Fluent": "Fluente",
   "A2 (elementary)": "A2 (elementare)",
-  "My working language for code, documentation, meetings, reviews and teaching.": "La mia lingua di lavoro per codice, documentazione, riunioni, revisioni e insegnamento.",
-  "Everyday conversations; improving step by step.": "Conversazioni quotidiane; in miglioramento passo dopo passo.",
   "Four teams, seven years. Open a role for the details.": "Quattro team, sette anni. Apri un ruolo per i dettagli.",
   "Software Engineer – Cloud Products": "Ingegnere del software – Prodotti cloud",
   "Full-Stack Developer Lead / Team Lead": "Lead developer full-stack / Team leader",

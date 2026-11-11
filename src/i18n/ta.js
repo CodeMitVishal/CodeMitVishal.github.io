@@ -39,8 +39,6 @@ export default {
   "Full professional proficiency": "முழுமையான தொழில்முறைத் திறன்",
   "Fluent": "சரளமாக",
   "A2 (elementary)": "A2 (தொடக்க நிலை)",
-  "My working language for code, documentation, meetings, reviews and teaching.": "கோட், ஆவணங்கள், கூட்டங்கள், மதிப்பாய்வுகள், கற்பித்தல் ஆகியவற்றுக்கான என் பணி மொழி.",
-  "Everyday conversations; improving step by step.": "அன்றாட உரையாடல்கள்; படிப்படியாக மேம்படுத்தி வருகிறேன்.",
   "Four teams, seven years. Open a role for the details.": "நான்கு குழுக்கள், ஏழு ஆண்டுகள். விவரங்களுக்கு ஒரு பணியைத் திறக்கவும்.",
   "Software Engineer – Cloud Products": "மென்பொருள் பொறியாளர் – கிளவுட் தயாரிப்புகள்",
   "Full-Stack Developer Lead / Team Lead": "ஃபுல்-ஸ்டாக் டெவலப்பர் லீட் / குழுத் தலைவர்",
@@ -307,4 +305,5 @@ export default {
   "Send": "அனுப்பு",
   "Augsburg, Germany · available from 1 March 2027": "ஆக்ஸ்பர்க், ஜெர்மனி · 1 மார்ச் 2027 முதல் கிடைப்பேன்",
   "Available to start a new role on 1 March 2027.": "1 மார்ச் 2027 முதல் புதிய பணியில் சேரத் தயார்.",
+  "Hindi": "இந்தி",
 };

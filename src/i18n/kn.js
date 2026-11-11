@@ -42,8 +42,6 @@ export default {
   "Full professional proficiency": "ಪೂರ್ಣ ವೃತ್ತಿಪರ ಪ್ರಾವೀಣ್ಯತೆ",
   "Fluent": "ನಿರರ್ಗಳ",
   "A2 (elementary)": "A2 (ಪ್ರಾಥಮಿಕ)",
-  "My working language for code, documentation, meetings, reviews and teaching.": "ಕೋಡ್, ದಾಖಲೆಗಳು, ಸಭೆಗಳು, ರಿವ್ಯೂಗಳು ಮತ್ತು ಬೋಧನೆಗೆ ನನ್ನ ಕೆಲಸದ ಭಾಷೆ.",
-  "Everyday conversations; improving step by step.": "ದೈನಂದಿನ ಸಂಭಾಷಣೆಗಳು; ಹಂತ ಹಂತವಾಗಿ ಸುಧಾರಿಸುತ್ತಿದೆ.",
   "Four teams, seven years. Open a role for the details.": "ನಾಲ್ಕು ತಂಡಗಳು, ಏಳು ವರ್ಷಗಳು. ವಿವರಗಳಿಗಾಗಿ ಒಂದು ಹುದ್ದೆಯನ್ನು ತೆರೆಯಿರಿ.",
   "Software Engineer – Cloud Products": "ಸಾಫ್ಟ್‌ವೇರ್ ಎಂಜಿನಿಯರ್ – ಕ್ಲೌಡ್ ಪ್ರಾಡಕ್ಟ್ಸ್",
   "Full-Stack Developer Lead / Team Lead": "ಫುಲ್-ಸ್ಟ್ಯಾಕ್ ಡೆವಲಪರ್ ಲೀಡ್ / ಟೀಮ್ ಲೀಡ್",

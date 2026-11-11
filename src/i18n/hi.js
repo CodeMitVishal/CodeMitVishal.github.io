@@ -53,8 +53,6 @@ export default {
   "Full professional proficiency": "पूर्ण पेशेवर दक्षता",
   "Fluent": "धाराप्रवाह",
   "A2 (elementary)": "A2 (प्रारंभिक स्तर)",
-  "My working language for code, documentation, meetings, reviews and teaching.": "कोड, डॉक्यूमेंटेशन, मीटिंग, रिव्यू और पढ़ाने के लिए मेरी कामकाजी भाषा।",
-  "Everyday conversations; improving step by step.": "रोज़मर्रा की बातचीत; धीरे-धीरे सुधार जारी है।",
 
   // experience
   "Four teams, seven years. Open a role for the details.": "चार टीमें, सात साल। विवरण के लिए कोई भूमिका खोलें।",
