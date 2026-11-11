@@ -23,8 +23,8 @@ function contentSecurityPolicy() {
         const policy = [
           "default-src 'self'",
           `script-src 'self' ${hashes.join(" ")}`,
-          "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-          "font-src 'self' https://fonts.gstatic.com",
+          "style-src 'self' 'unsafe-inline'",
+          "font-src 'self'",
           "img-src 'self' data: https:",
           `connect-src 'self' ${new URL(assistant.endpoint).origin}`,
           "frame-src 'none'",
@@ -45,5 +45,7 @@ function contentSecurityPolicy() {
 // (repo CodeMitVishal/CodeMitVishal.github.io). Deploy with: npm run deploy
 export default defineConfig({
   plugins: [react(), contentSecurityPolicy()],
+  // Never inline font files as data: URLs: the CSP only allows fonts served by this site.
+  build: { assetsInlineLimit: (file) => (/\.woff2?$/.test(file) ? false : undefined) },
   base: "/",
 });

@@ -62,7 +62,7 @@ sequenceDiagram
 - **Every other European and Indian language** opens Google's machine translation of the site. The picker marks these with **G ↗** and says they may contain errors.
 - **Rich text inside translations** uses `**bold**`, `*italic*` and `{placeholder}` (for links), so each language can use its own word order.
 - **Language switches are atomic.** The page keeps the current language until the new dictionary has loaded, so text never appears half in one language and half in another.
-- **Fonts:** Indian scripts use Noto Sans/Serif (Devanagari, Kannada, Bengali, Tamil, Telugu, Gujarati) with taller line spacing; Google Fonts only downloads a script's font when that script appears on the page.
+- **Fonts:** Indian scripts use Noto Sans/Serif (Devanagari, Kannada, Bengali, Tamil, Telugu, Gujarati) with taller line spacing. All fonts are **self-hosted** (Fontsource packages, [`src/fonts.js`](src/fonts.js)): no request goes to Google, so visitors' IP addresses are never shared (GDPR). The browser only downloads a script's font when that script appears on the page.
 
 To add or change text: edit the English in `data.js` or a component, then add the same English string with its translation to each file in `src/i18n/`. Any string without a translation simply stays in English. In the browser console, `window.__i18nMissing` lists anything not yet translated.
 
@@ -95,7 +95,7 @@ sequenceDiagram
 - **Grounded answers.** The model must answer only from the supplied website content, say "I don't know" otherwise, stay on topic, ignore attempts to change its rules, and never ask for personal data.
 - **Privacy.** Nothing visitors type is logged; the Worker logs only token counts.
 - **No personal data in the chat.** If a message contains personal details (email, phone, card or bank numbers, ID numbers, passwords, addresses), the browser doesn't send it and asks the visitor to remove them: the chat is only for questions about Vishal's professional experience. The Worker checks again and refuses such messages before the model sees them ([`src/privacy.js`](src/privacy.js)).
-- **Hardened responses.** The Worker sends `nosniff`, `no-referrer`, `no-store` and a deny-all CSP. The website gets a Content-Security-Policy at build time (see [`vite.config.js`](vite.config.js)): scripts only from the site itself (inline scripts only by their hash), network calls only to the assistant, no frames, plugins or forms. It is not applied on Google's translated copy (`*.translate.goog`), because Google's proxy injects its own scripts there.
+- **Hardened responses.** The Worker sends `nosniff`, `no-referrer`, `no-store` and a deny-all CSP. The website gets a Content-Security-Policy at build time (see [`vite.config.js`](vite.config.js)): scripts only from the site itself (inline scripts only by their hash), fonts only from the site itself, network calls only to the assistant, no frames, plugins or forms. It is not applied on Google's translated copy (`*.translate.goog`), because Google's proxy injects its own scripts there.
 - **No surprise bills.** The Workers Free plan includes 10,000 AI units per day (roughly 300 questions). When they run out, the AI simply stops until the next day and the chat falls back to on-page search.
 - The chat panel tells visitors that AI can make mistakes and not to share personal information.
 
